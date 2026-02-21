@@ -1,0 +1,13 @@
+{
+  "name": "kouhaitou-googleads",
+  "version": "1.0.0",
+  "description": "株情報無料配信 - kouhaitou.jp",
+  "scripts": {
+    "build": "node scripts/build-cms.js",
+    "build:cms": "node scripts/build-cms.js"
+  },
+  "devDependencies": {
+    "marked": "^11.0.0",
+    "gray-matter": "^4.0.3"
+  }
+}
