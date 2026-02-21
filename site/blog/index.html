@@ -26,6 +26,8 @@
   <style>
     body { font-family: "メイリオ", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif; }
     .article-card { border: 1px solid #e5e7eb; }
+    .article-card.hidden { display: none !important; }
+    .pagination-btn.active { background: #1a3c6e; color: white; border-color: #1a3c6e; }
   </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -60,20 +62,11 @@
     <h1 class="text-3xl font-bold text-[#1a3c6e] mb-2">ブログ一覧</h1>
     <p class="text-gray-600 mb-10">元証券アナリストが毎週更新する実践的な株式投資情報です。<br>2026年2月最新の記事を随時追加しています。</p>
 
-    <div class="mb-10 p-6 border border-gray-200 rounded bg-gray-50">
-      <p class="font-medium text-[#1a3c6e] mb-3">2025年 四半期ごとの詳細分析</p>
-      <div class="flex flex-wrap gap-4 text-sm">
-        <a href="2025-q1-nikkei-review.html" class="text-[#1a3c6e] hover:underline">1〜3月</a>
-        <a href="2025-q2-nikkei-review.html" class="text-[#1a3c6e] hover:underline">4〜6月</a>
-        <a href="2025-q3-nikkei-review.html" class="text-[#1a3c6e] hover:underline">7〜9月</a>
-        <a href="2025-q4-nikkei-review.html" class="text-[#1a3c6e] hover:underline">10〜12月</a>
-      </div>
-    </div>
-
-    <div class="space-y-10">
-
-      <article class="article-card flex flex-col md:flex-row gap-6 p-6">
-        <div class="md:w-72 h-48 bg-gray-100 flex-shrink-0"></div>
+    <div id="blog-list" class="space-y-10">
+      <article class="article-card flex flex-col md:flex-row gap-6 p-6" data-page="1">
+        <a href="2025-nikkei-review.html" class="md:w-72 h-48 flex-shrink-0 block overflow-hidden rounded">
+          <img src="/images/2025-nikkei-review-thumb.svg" alt="2025年日本株式市場を振り返る" class="w-full h-full object-cover">
+        </a>
         <div class="flex-1">
           <div class="flex items-center gap-4 text-xs text-gray-500 mb-3">
             <time datetime="2026-02-21">2026年2月21日</time>
@@ -86,8 +79,10 @@
         </div>
       </article>
 
-      <article class="article-card flex flex-col md:flex-row gap-6 p-6">
-        <div class="md:w-72 h-48 bg-gray-100 flex-shrink-0"></div>
+      <article class="article-card flex flex-col md:flex-row gap-6 p-6" data-page="1">
+        <a href="2026-bouraku-meigara-buy-opportunity.html" class="md:w-72 h-48 flex-shrink-0 block overflow-hidden rounded">
+          <img src="/images/2026-bouraku-meigara-thumb.svg" alt="暴落銘柄 買い増しチャンス" class="w-full h-full object-cover">
+        </a>
         <div class="flex-1">
           <div class="flex items-center gap-4 text-xs text-gray-500 mb-3">
             <time datetime="2026-02-21">2026年2月21日</time>
@@ -100,8 +95,10 @@
         </div>
       </article>
 
-      <article class="article-card flex flex-col md:flex-row gap-6 p-6">
-        <div class="md:w-72 h-48 bg-gray-100 flex-shrink-0"></div>
+      <article class="article-card flex flex-col md:flex-row gap-6 p-6" data-page="1">
+        <a href="2026-kouhaitou-kabuka-ranking.html" class="md:w-72 h-48 flex-shrink-0 block overflow-hidden rounded">
+          <img src="/images/2026-kouhaitou-kabuka-ranking-thumb.svg" alt="高配当株 ランキングTOP10" class="w-full h-full object-cover">
+        </a>
         <div class="flex-1">
           <div class="flex items-center gap-4 text-xs text-gray-500 mb-3">
             <time datetime="2026-02-21">2026年2月21日</time>
@@ -114,8 +111,10 @@
         </div>
       </article>
 
-      <article class="article-card flex flex-col md:flex-row gap-6 p-6">
-        <div class="md:w-72 h-48 bg-gray-100 flex-shrink-0"></div>
+      <article class="article-card flex flex-col md:flex-row gap-6 p-6" data-page="2">
+        <a href="nisa-osusume-meigara-2026.html" class="md:w-72 h-48 flex-shrink-0 block overflow-hidden rounded">
+          <img src="/images/nisa-osusume-meigara-2026-thumb.svg" alt="NISA おすすめ銘柄TOP10" class="w-full h-full object-cover">
+        </a>
         <div class="flex-1">
           <div class="flex items-center gap-4 text-xs text-gray-500 mb-3">
             <time datetime="2026-02-20">2026年2月20日</time>
@@ -128,8 +127,10 @@
         </div>
       </article>
 
-      <article class="article-card flex flex-col md:flex-row gap-6 p-6">
-        <div class="md:w-72 h-48 bg-gray-100 flex-shrink-0"></div>
+      <article class="article-card flex flex-col md:flex-row gap-6 p-6" data-page="2">
+        <a href="kabusui-osusume-2026.html" class="md:w-72 h-48 flex-shrink-0 block overflow-hidden rounded">
+          <img src="/images/kabusui-osusume-2026-thumb.svg" alt="配当株 おすすめランキング" class="w-full h-full object-cover">
+        </a>
         <div class="flex-1">
           <div class="flex items-center gap-4 text-xs text-gray-500 mb-3">
             <time datetime="2026-02-19">2026年2月19日</time>
@@ -142,8 +143,10 @@
         </div>
       </article>
 
-      <article class="article-card flex flex-col md:flex-row gap-6 p-6">
-        <div class="md:w-72 h-48 bg-gray-100 flex-shrink-0"></div>
+      <article class="article-card flex flex-col md:flex-row gap-6 p-6" data-page="2">
+        <a href="kabushiki-suishou-meigara-muryou.html" class="md:w-72 h-48 flex-shrink-0 block overflow-hidden rounded">
+          <img src="/images/kabushiki-suishou-meigara-muryou-thumb.svg" alt="株推奨銘柄 無料配信" class="w-full h-full object-cover">
+        </a>
         <div class="flex-1">
           <div class="flex items-center gap-4 text-xs text-gray-500 mb-3">
             <time datetime="2026-02-18">2026年2月18日</time>
@@ -156,8 +159,10 @@
         </div>
       </article>
 
-      <article class="article-card flex flex-col md:flex-row gap-6 p-6">
-        <div class="md:w-72 h-48 bg-gray-100 flex-shrink-0"></div>
+      <article class="article-card flex flex-col md:flex-row gap-6 p-6" data-page="2">
+        <a href="nikkei-kouhaitou50-2026.html" class="md:w-72 h-48 flex-shrink-0 block overflow-hidden rounded">
+          <img src="/images/nikkei-kouhaitou50-2026-thumb.svg" alt="日経平均 高配当株50" class="w-full h-full object-cover">
+        </a>
         <div class="flex-1">
           <div class="flex items-center gap-4 text-xs text-gray-500 mb-3">
             <time datetime="2026-02-17">2026年2月17日</time>
@@ -170,6 +175,23 @@
         </div>
       </article>
 
+    </div>
+
+    <!-- 翻页 -->
+    <nav class="flex justify-center items-center gap-2 mt-12 mb-10" id="pagination" aria-label="ページネーション">
+      <a href="#" class="pagination-btn px-4 py-2 rounded border border-gray-300 hover:bg-gray-50 text-sm" data-page="prev" aria-label="前へ">‹</a>
+      <div class="flex gap-1" id="page-numbers"></div>
+      <a href="#" class="pagination-btn px-4 py-2 rounded border border-gray-300 hover:bg-gray-50 text-sm" data-page="next" aria-label="次へ">›</a>
+    </nav>
+
+    <div class="mb-10 p-6 border border-gray-200 rounded bg-gray-50">
+      <p class="font-medium text-[#1a3c6e] mb-3">2025年 四半期ごとの詳細分析</p>
+      <div class="flex flex-wrap gap-4 text-sm">
+        <a href="2025-q1-nikkei-review.html" class="text-[#1a3c6e] hover:underline">1〜3月</a>
+        <a href="2025-q2-nikkei-review.html" class="text-[#1a3c6e] hover:underline">4〜6月</a>
+        <a href="2025-q3-nikkei-review.html" class="text-[#1a3c6e] hover:underline">7〜9月</a>
+        <a href="2025-q4-nikkei-review.html" class="text-[#1a3c6e] hover:underline">10〜12月</a>
+      </div>
     </div>
   </main>
 
@@ -192,6 +214,7 @@
         <div>
           <p class="font-medium mb-3">お問い合わせ</p>
           <p class="text-sm opacity-80">LINE公式アカウントより</p>
+          <p class="text-sm opacity-80 mt-1"><a href="mailto:support@kouhaitou.jp" class="hover:underline">support@kouhaitou.jp</a></p>
         </div>
         <div class="md:text-right">
           <a href="https://line.me/R/ti/p/@981czbkb" 
@@ -207,5 +230,34 @@
     </div>
   </footer>
 
+  <script>
+    (function(){
+      var PER_PAGE = 4, total = document.querySelectorAll('#blog-list article').length;
+      var totalPages = Math.ceil(total / PER_PAGE);
+      var currentPage = 1;
+      function showPage(p){
+        currentPage = Math.max(1, Math.min(p, totalPages));
+        document.querySelectorAll('#blog-list article').forEach(function(el,i){
+          el.classList.toggle('hidden', Math.floor(i/PER_PAGE)+1 !== currentPage);
+        });
+        document.querySelectorAll('#page-numbers .pagination-btn').forEach(function(b){
+          b.classList.toggle('active', +b.dataset.page === currentPage);
+        });
+        document.querySelector('[data-page="prev"]').classList.toggle('opacity-50', currentPage<=1);
+        document.querySelector('[data-page="next"]').classList.toggle('opacity-50', currentPage>=totalPages);
+      }
+      var nav = document.getElementById('page-numbers');
+      for(var i=1;i<=totalPages;i++){
+        var a = document.createElement('a');
+        a.href='#'; a.textContent=i; a.className='pagination-btn px-3 py-2 rounded border border-gray-300 hover:bg-gray-50 text-sm';
+        a.dataset.page = ''+i;
+        a.onclick = function(e){ e.preventDefault(); showPage(+this.dataset.page); };
+        nav.appendChild(a);
+      }
+      document.querySelector('[data-page="prev"]').onclick = function(e){ e.preventDefault(); showPage(currentPage-1); };
+      document.querySelector('[data-page="next"]').onclick = function(e){ e.preventDefault(); showPage(currentPage+1); };
+      showPage(1);
+    })();
+  </script>
 </body>
 </html>
