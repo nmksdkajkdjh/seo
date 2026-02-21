@@ -26,7 +26,7 @@ function getBlogTemplate(data) {
   <meta name="description" content="${escapeHtml(desc)}">
   <link rel="canonical" href="https://kouhaitou.jp/blog/${slug}.html">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Article","headline":"${escapeHtml(title)}","datePublished":"${dateStr}","author":{"@type":"Person","name":"山田太郎"},"publisher":{"@type":"Organization","name":"株情報無料配信"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://kouhaitou.jp/blog/${slug}.html"}}
+  {"@context":"https://schema.org","@type":"Article","headline":"${escapeHtml(title)}","datePublished":"${dateStr}","author":{"@type":"Person","name":"西宫寛生"},"publisher":{"@type":"Organization","name":"株情報無料配信"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://kouhaitou.jp/blog/${slug}.html"}}
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>body { font-family: "メイリオ", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif; }</style>

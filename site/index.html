@@ -7,7 +7,10 @@
   <title>日経平均高配当株50 2026｜おすすめ銘柄＆利回り公開無料LINE</title>
   <meta name="description" content="2026年2月最新高配当株ランキングTOP10をプロが厳選。日経平均高配当株50対応・利回り4%以上・NISA成長投資枠対応。毎週無料レポートをLINE配信中。登録者32,000人突破。投資はリスクを伴い元本保証はありません。">
   <link rel="canonical" href="https://kouhaitou.jp/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/images/favicon.png" type="image/png">
   <link rel="alternate" hreflang="ja" href="https://kouhaitou.jp/">
+  <meta name="keywords" content="高配当株,おすすめ,2026,NISA,銘柄,日経平均,株,投資,配当,ランキング,無料">
   <meta name="geo.region" content="JP">
   <meta name="geo.placename" content="日本">
   <meta name="targeting" content="日本全国,個人投資家,株式投資,NISA,高配当株">
@@ -24,6 +27,9 @@
   dataLayer.push({ 'page_category': 'stock_investment', 'audience': 'japan_individual_investors', 'target_region': 'japan_nationwide', 'content_type': 'high_dividend_stocks' });
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebSite","name":"株情報無料配信","url":"https://kouhaitou.jp/","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://kouhaitou.jp/search/?q={search_term_string}"},"query-input":"required name=search_term_string"}}
+  </script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebPage","name":"株 推奨銘柄 無料LINE配信","description":"日経平均高配当株50対応・プロ厳選銘柄無料配信","inLanguage":"ja","isPartOf":{"@type":"WebSite","name":"株情報無料配信","url":"https://kouhaitou.jp/"},"about":[{"@type":"Place","name":"日本","address":{"@type":"PostalAddress","addressCountry":"JP"}},{"@type":"Thing","name":"株式投資"}],"audience":{"@type":"Audience","audienceType":"日本全国の個人投資家"},"offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}}
   </script>
@@ -50,22 +56,37 @@
   <!-- Kabutan风格：主Header + 实时行情 + 搜索 -->
   <header class="bg-white border-b-2 border-[#1a3c6e] shadow-sm">
     <div class="max-w-7xl mx-auto px-6 py-4">
-      <div class="flex flex-col lg:flex-row lg:items-center gap-4">
-        <div class="flex items-center justify-between w-full lg:w-auto">
-          <a href="/" class="flex items-center gap-3 flex-shrink-0">
-            <span class="text-2xl md:text-3xl font-bold tracking-tight text-[#1a3c6e]">株情報無料配信</span>
-            <span class="text-xs text-gray-500 pt-1 hidden sm:inline">プロの目線で</span>
-          </a>
-          <div class="flex items-center gap-2 lg:hidden">
-            <a href="https://line.me/R/ti/p/@981czbkb" class="bg-[#00B900] hover:bg-[#009900] text-white px-4 py-2 rounded text-sm font-medium">LINE</a>
-            <button type="button" id="nav-toggle" class="p-2 rounded hover:bg-gray-100" aria-label="メニュー">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-            </button>
+      <div class="flex flex-col gap-4">
+        <div class="flex flex-col md:flex-row md:items-center gap-4">
+          <div class="flex items-center justify-between w-full md:w-auto">
+            <a href="/" class="flex items-center gap-3 flex-shrink-0">
+              <span class="text-2xl md:text-3xl font-bold tracking-tight text-[#1a3c6e]">株情報無料配信</span>
+              <span class="text-xs text-gray-500 pt-1 hidden sm:inline">プロの目線で</span>
+            </a>
+            <div class="flex items-center gap-2 md:hidden">
+              <a href="https://line.me/R/ti/p/@981czbkb" class="bg-[#00B900] hover:bg-[#009900] text-white px-4 py-2 rounded text-sm font-medium">LINE</a>
+              <button type="button" id="nav-toggle" class="p-2 rounded hover:bg-gray-100" aria-label="メニュー">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div id="search-wrapper" class="hidden md:flex md:flex-1 md:max-w-md items-center gap-3 flex-shrink-0">
+            <div class="flex-1 relative">
+              <input type="text" id="global-search" 
+                     class="w-full bg-gray-100 border border-gray-300 rounded py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-[#1a3c6e] placeholder:text-gray-500"
+                     placeholder="銘柄コード・企業名で検索">
+              <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+              <div id="search-suggestions" class="hidden absolute w-full bg-white border border-gray-300 rounded mt-1 z-50 max-h-80 overflow-auto top-full left-0 shadow"></div>
+            </div>
+            <a href="https://line.me/R/ti/p/@981czbkb" class="bg-[#00B900] hover:bg-[#009900] text-white px-6 sm:px-8 py-3 rounded text-sm font-medium transition whitespace-nowrap">
+              LINE登録
+            </a>
           </div>
         </div>
 
-        <!-- 实时行情栏（Kabutan风：表格感 + 红涨绿跌） -->
-        <div id="market-ticker" class="flex-1 overflow-x-auto scrollbar-hide -mx-2 min-w-0 hidden md:block bg-[#f8fafc] border border-gray-200 rounded px-4 py-2">
+        <!-- 实时行情栏：独立一行，确保完整显示 -->
+        <div id="market-ticker" class="w-full overflow-x-auto scrollbar-hide hidden md:block bg-[#f8fafc] border border-gray-200 rounded px-4 py-2">
           <div class="flex items-center gap-4 lg:gap-6 whitespace-nowrap text-sm min-w-max">
             <div class="flex items-center gap-2 py-1 px-3 bg-white rounded border border-gray-200"><span class="font-medium text-gray-600">日経平均</span><span class="font-bold text-[#1a3c6e]" id="nikkei-price">---</span><span class="text-sm" id="nikkei-change"></span></div>
             <div class="flex items-center gap-2 py-1 px-3 bg-white rounded border border-gray-200"><span class="font-medium text-gray-600">TOPIX</span><span class="font-bold text-[#1a3c6e]" id="topix-price">---</span><span class="text-sm" id="topix-change"></span></div>
@@ -74,19 +95,6 @@
             <div class="flex items-center gap-2 py-1 px-3 bg-white rounded border border-gray-200"><span class="font-medium text-gray-600">上海総合</span><span class="font-bold text-[#1a3c6e]" id="shanghai-price">---</span><span class="text-sm" id="shanghai-change"></span></div>
             <div class="flex items-center gap-2 py-1 px-3 bg-white rounded border border-gray-200"><span class="font-medium text-gray-600">東証REIT</span><span class="font-bold text-[#1a3c6e]" id="reit-price">---</span><span class="text-sm" id="reit-change"></span></div>
           </div>
-        </div>
-
-        <div id="search-wrapper" class="hidden md:flex items-center gap-3 sm:gap-4 flex-shrink-0">
-          <div class="flex-1 max-w-xs sm:max-w-md relative">
-            <input type="text" id="global-search" 
-                   class="w-full bg-gray-100 border border-gray-300 rounded py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-[#1a3c6e] placeholder:text-gray-500"
-                   placeholder="銘柄コード・企業名で検索">
-            <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-            <div id="search-suggestions" class="hidden absolute w-full bg-white border border-gray-300 rounded mt-1 z-50 max-h-80 overflow-auto top-full left-0 shadow"></div>
-          </div>
-          <a href="https://line.me/R/ti/p/@981czbkb" class="bg-[#00B900] hover:bg-[#009900] text-white px-6 sm:px-8 py-3 rounded text-sm font-medium transition whitespace-nowrap">
-            LINE登録
-          </a>
         </div>
       </div>
     </div>
@@ -301,7 +309,7 @@
         </div>
         <div>
           <p class="font-medium mb-3">お問い合わせ</p>
-          <p class="text-sm opacity-80">LINE公式アカウントより</p>
+          <p class="text-sm opacity-80"><a href="https://line.me/R/ti/p/@981czbkb" class="hover:underline">LINE公式アカウント</a>より</p>
           <p class="text-sm opacity-80 mt-1"><a href="mailto:support@kouhaitou.jp" class="hover:underline">support@kouhaitou.jp</a></p>
         </div>
         <div class="md:text-right">
@@ -328,7 +336,7 @@
   })();
 
   // ==================== 实时行情（Yahoo v7/v8 双源，按 symbol 映射） ====================
-  const symbolMap = { '^N225':'nikkei', '^TPX':'topix', 'USDJPY=X':'usdjpy', '^DJI':'nydow', '000001.SS':'shanghai', '^JPXREIT':'reit' };
+  const symbolMap = { '^N225':'nikkei', '^TPX':'topix', '998405.T':'topix', 'USDJPY=X':'usdjpy', '^DJI':'nydow', '000001.SS':'shanghai', '^JPXREIT':'reit' };
   async function fetchMarketData() {
     try {
       const res = await fetch('/.netlify/functions/yahoo-proxy');
@@ -358,6 +366,14 @@
   }
   setInterval(fetchMarketData, 30000);
   fetchMarketData();
+
+  // ==================== GTM LINE クリック計測 ====================
+  document.querySelectorAll('a[href*="line.me"]').forEach(function(a){
+    a.addEventListener('click', function(){
+      window.dataLayer = window.dataLayer || [];
+      dataLayer.push({ 'event': 'line_register_click', 'button_location': a.id || 'line_link', 'conversion': 'line_add' });
+    });
+  });
 
   // ==================== 搜索框 ====================
   document.getElementById('nav-toggle')?.addEventListener('click', function() {

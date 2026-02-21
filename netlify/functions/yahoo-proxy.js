@@ -1,20 +1,46 @@
 /**
  * Netlify Function: 行情数据代理
- * 优先 Yahoo v7 quote，失败时回退到 v8 chart
+ * 1. 优先 Yahoo v7 quote
+ * 2. v7 部分返回时，对缺失/空价的 symbol 单独请求 v8 chart
+ * 3. ExchangeRate-API 备用：USD/JPY（需 EXCHANGERATE_API_KEY）
+ * 4. Finnhub 备用：股票/指数（需 FINNHUB_API_KEY）
  */
-const SYMBOLS = ['^N225', '^TPX', 'USDJPY=X', '^DJI', '000001.SS', '^JPXREIT'];
-const ID_MAP = { '^N225': 'nikkei', '^TPX': 'topix', 'USDJPY=X': 'usdjpy', '^DJI': 'nydow', '000001.SS': 'shanghai', '^JPXREIT': 'reit' };
+const TICKERS = [
+  { id: 'nikkei', symbols: ['^N225'] },
+  { id: 'topix', symbols: ['^TPX', '998405.T'] },
+  { id: 'usdjpy', symbols: ['USDJPY=X'] },
+  { id: 'nydow', symbols: ['^DJI'] },
+  { id: 'shanghai', symbols: ['000001.SS'] },
+  { id: 'reit', symbols: ['^JPXREIT'] }
+];
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 
+// Finnhub symbol 映射（Yahoo 失败时使用）
+const FINNHUB_SYMBOLS = {
+  nikkei: '^N225',
+  topix: '^TPX',
+  usdjpy: 'OANDA:USD_JPY',
+  nydow: '^DJI',
+  shanghai: '000001.SS',
+  reit: '1348.T'  // 東証REIT上場投信
+};
+
+function getPrice(q) {
+  if (!q) return null;
+  return q.regularMarketPrice ?? q.postMarketPrice ?? q.preMarketPrice ?? q.regularMarketPreviousClose ?? null;
+}
+
 async function fetchV7() {
-  const url = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${SYMBOLS.join(',')}`;
+  const allSyms = [...new Set(TICKERS.flatMap(t => t.symbols))];
+  const url = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${allSyms.map(s=>encodeURIComponent(s)).join(',')}`;
   const res = await fetch(url, {
-    headers: { 'User-Agent': UA, 'Accept': 'application/json', 'Accept-Language': 'en-US,en;q=0.9' }
+    headers: { 'User-Agent': UA, 'Accept': 'application/json', 'Accept-Language': 'en-US,en;q=0.9,ja;q=0.8' }
   });
   const data = await res.json();
   const list = data?.quoteResponse?.result || [];
-  if (list.length > 0) return list;
-  return null;
+  const bySym = {};
+  list.forEach(q => { if (q?.symbol) bySym[q.symbol] = q; });
+  return bySym;
 }
 
 async function fetchV8Chart(symbol) {
@@ -41,15 +67,84 @@ async function fetchV8Chart(symbol) {
   };
 }
 
-async function fetchV8Fallback() {
-  const results = [];
-  for (const sym of SYMBOLS) {
+/** ExchangeRate-API: 获取 USD/JPY */
+async function fetchExchangeRateUSDJPY() {
+  const key = process.env.EXCHANGERATE_API_KEY;
+  if (!key) return null;
+  try {
+    const res = await fetch(`https://v6.exchangerate-api.com/v6/${key}/latest/USD`);
+    const data = await res.json();
+    const rate = data?.conversion_rates?.JPY;
+    if (rate != null) {
+      return {
+        symbol: 'USDJPY=X',
+        regularMarketPrice: rate,
+        regularMarketChange: 0,
+        regularMarketChangePercent: 0
+      };
+    }
+  } catch (_) {}
+  return null;
+}
+
+/** Finnhub Quote API */
+async function fetchFinnhubQuote(symbol) {
+  const key = process.env.FINNHUB_API_KEY;
+  if (!key) return null;
+  try {
+    const res = await fetch(`https://finnhub.io/api/v1/quote?symbol=${encodeURIComponent(symbol)}&token=${key}`);
+    const data = await res.json();
+    const p = data?.c ?? data?.pc;  // current or previous close
+    if (p != null && p > 0) {
+      const prev = data?.pc ?? data?.o ?? p;
+      const ch = p - prev;
+      const pct = prev ? (ch / prev) * 100 : 0;
+      return {
+        symbol,
+        regularMarketPrice: p,
+        regularMarketChange: ch,
+        regularMarketChangePercent: pct
+      };
+    }
+  } catch (_) {}
+  return null;
+}
+
+async function resolveTicker(ticker, bySym) {
+  // 1. Yahoo v7
+  for (const sym of ticker.symbols) {
+    const q = bySym[sym];
+    const p = getPrice(q);
+    if (p != null) {
+      return {
+        symbol: sym,
+        regularMarketPrice: p,
+        regularMarketChange: q.regularMarketChange ?? 0,
+        regularMarketChangePercent: q.regularMarketChangePercent ?? 0
+      };
+    }
+  }
+  // 2. Yahoo v8 chart
+  for (const sym of ticker.symbols) {
     try {
       const q = await fetchV8Chart(sym);
-      if (q) results.push(q);
+      if (q && getPrice(q) != null) {
+        return { symbol: ticker.symbols[0], ...q };
+      }
     } catch (_) {}
   }
-  return results.length > 0 ? results : null;
+  // 3. USD/JPY: ExchangeRate-API 备用
+  if (ticker.id === 'usdjpy') {
+    const q = await fetchExchangeRateUSDJPY();
+    if (q) return q;
+  }
+  // 4. Finnhub 备用
+  const fhSym = FINNHUB_SYMBOLS[ticker.id];
+  if (fhSym) {
+    const q = await fetchFinnhubQuote(fhSym);
+    if (q) return { symbol: ticker.symbols[0], ...q };
+  }
+  return null;
 }
 
 exports.handler = async (event) => {
@@ -58,12 +153,13 @@ exports.handler = async (event) => {
   }
   const headers = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Cache-Control': 'public, max-age=60' };
   try {
-    let list = await fetchV7();
-    if (!list || list.length === 0) list = await fetchV8Fallback();
-    if (!list || list.length === 0) {
-      return { statusCode: 200, headers, body: JSON.stringify({ quoteResponse: { result: [] }, fallback: true }) };
+    let bySym = await fetchV7();
+    const results = [];
+    for (const ticker of TICKERS) {
+      const q = await resolveTicker(ticker, bySym);
+      if (q) results.push(q);
     }
-    return { statusCode: 200, headers, body: JSON.stringify({ quoteResponse: { result: list } }) };
+    return { statusCode: 200, headers, body: JSON.stringify({ quoteResponse: { result: results } }) };
   } catch (e) {
     return { statusCode: 500, headers, body: JSON.stringify({ error: 'Proxy failed', quoteResponse: { result: [] } }) };
   }

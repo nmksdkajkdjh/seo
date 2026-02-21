@@ -109,7 +109,18 @@ dataLayer.push({
 
 ---
 
-## 5. チェックリスト
+## 5. 実装済み項目
+
+| 項目 | 状態 |
+|------|------|
+| keywords meta | ✅ index, blog |
+| geo.placename, targeting | ✅ 全ページ |
+| WebSite + SearchAction Schema | ✅ サイト内検索対応 |
+| dataLayer（page_category等） | ✅ index, blog |
+| LINEクリック dataLayer イベント | ✅ line_register_click |
+| GEO: title, og:title, og:description, meta description | ✅ 8地域対応 |
+
+## 6. チェックリスト
 
 - [ ] GTM コンテナIDを Snippet Injection に設定
 - [ ] GA4 プロパティ作成・GTMでタグ設定
