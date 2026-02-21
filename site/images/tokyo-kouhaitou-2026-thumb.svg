@@ -1,5 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="288" height="192" viewBox="0 0 288 192">
   <rect fill="#1a3c6e" width="288" height="192"/>
-  <text x="144" y="85" fill="white" font-family="sans-serif" font-size="16" text-anchor="middle" font-weight="bold">q¨ ÿMS*</text>
-  <text x="144" y="110" fill="rgba(255,255,255,0.9)" font-family="sans-serif" font-size="12" text-anchor="middle">2026 JYYÅTOP10</text>
+  <text x="144" y="82" fill="white" font-family="Meiryo, sans-serif" font-size="16" text-anchor="middle" font-weight="bold">?? ????</text>
+  <text x="144" y="108" fill="white" font-family="Meiryo, sans-serif" font-size="14" text-anchor="middle">2026? ??????? TOP10</text>
+  <text x="144" y="136" fill="rgba(255,255,255,0.85)" font-family="Meiryo, sans-serif" font-size="12" text-anchor="middle">????????</text>
 </svg>

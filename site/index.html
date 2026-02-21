@@ -29,7 +29,7 @@
     .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
   </style>
 </head>
-<body class="bg-white text-gray-800">
+<body class="bg-[#f0f0f0] text-gray-800">
 
   <!-- Kabutan风格：顶部合规栏 -->
   <div class="bg-[#1a3c6e] text-white text-xs py-1.5">
@@ -40,7 +40,7 @@
   </div>
 
   <!-- Kabutan风格：主Header + 实时行情 + 搜索 -->
-  <header class="bg-white border-b shadow-sm">
+  <header class="bg-white border-b border-gray-200">
     <div class="max-w-7xl mx-auto px-6 py-4">
       <div class="flex flex-col lg:flex-row lg:items-center gap-4">
         <div class="flex items-center justify-between w-full lg:w-auto">
@@ -71,10 +71,10 @@
         <div id="search-wrapper" class="hidden md:flex items-center gap-3 sm:gap-4 flex-shrink-0">
           <div class="flex-1 max-w-xs sm:max-w-md relative">
             <input type="text" id="global-search" 
-                   class="w-full bg-gray-100 border border-gray-300 rounded-full py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-[#1a3c6e] placeholder:text-gray-500"
+                   class="w-full bg-gray-100 border border-gray-300 rounded py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-[#1a3c6e] placeholder:text-gray-500"
                    placeholder="銘柄コード・企業名で検索">
-            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
-            <div id="search-suggestions" class="hidden absolute w-full bg-white border border-gray-300 rounded-xl shadow-lg mt-1 z-50 max-h-80 overflow-auto top-full left-0"></div>
+            <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <div id="search-suggestions" class="hidden absolute w-full bg-white border border-gray-300 rounded mt-1 z-50 max-h-80 overflow-auto top-full left-0 shadow"></div>
           </div>
           <a href="https://line.me/R/ti/p/@981czbkb" class="bg-[#00B900] hover:bg-[#009900] text-white px-6 sm:px-8 py-3 rounded text-sm font-medium transition whitespace-nowrap">
             LINE登録
@@ -84,11 +84,11 @@
     </div>
 
     <!-- 二级导航 + 移动端折叠菜单 -->
-    <div id="nav-mobile" class="lg:hidden hidden border-t bg-gray-50">
+    <div id="nav-mobile" class="lg:hidden hidden border-t bg-[#f8f8f8]">
       <div class="px-6 py-4 space-y-2">
         <a href="/" class="block py-3 font-bold text-[#1a3c6e] border-b border-gray-200">トップ</a>
         <a href="/blog/" class="block py-3 hover:text-[#1a3c6e] border-b border-gray-200">ブログ</a>
-        <a href="/search/" class="block py-3 hover:text-[#1a3c6e] border-b border-gray-200">🔍 検索</a>
+        <a href="/search/" class="block py-3 hover:text-[#1a3c6e] border-b border-gray-200">検索</a>
         <a href="/company.html" class="block py-3 hover:text-[#1a3c6e] border-b border-gray-200">会社概要</a>
         <a href="/law.html" class="block py-3 hover:text-[#1a3c6e] border-b border-gray-200">特定商取引法</a>
         <a href="/privacy.html" class="block py-3 hover:text-[#1a3c6e]">プライバシー</a>
@@ -116,8 +116,8 @@
 
     <div class="relative max-w-7xl mx-auto px-6 w-full z-10 py-16">
       <div class="max-w-2xl text-white">
-        <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-5 py-2 rounded-full text-sm mb-6">
-          <span class="text-green-400">●</span>
+        <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-5 py-2 rounded text-sm mb-6">
+          <span class="inline-block w-1.5 h-1.5 bg-green-400 rounded-sm flex-shrink-0 mt-0.5"></span>
           登録者32,000人突破
         </div>
         
@@ -132,7 +132,7 @@
         </p>
 
         <a id="geo-cta-hero" href="https://line.me/R/ti/p/@981czbkb" 
-           class="inline-block bg-[#00B900] hover:bg-[#00A000] text-white text-xl md:text-2xl font-medium px-12 md:px-16 py-5 md:py-6 rounded-2xl shadow-2xl transition transform hover:scale-[1.02]">
+           class="inline-block bg-[#00B900] hover:bg-[#00A000] text-white text-xl md:text-2xl font-medium px-12 md:px-16 py-5 md:py-6 rounded shadow transition ">
           LINEで今すぐ無料登録する
         </a>
         
@@ -140,7 +140,7 @@
       </div>
     </div>
 
-    <div class="absolute bottom-8 right-6 md:right-10 bg-white/95 backdrop-blur-md text-gray-800 rounded-2xl shadow-2xl px-5 md:px-7 py-3 md:py-4 hidden lg:block z-10">
+    <div class="absolute bottom-8 right-6 md:right-10 bg-white/95 backdrop-blur-md text-gray-800 rounded shadow px-5 md:px-7 py-3 md:py-4 hidden lg:block z-10">
       <div class="flex gap-6 md:gap-8 text-sm font-medium">
         <div>日経平均 <span class="font-bold" id="hero-nikkei-price">---</span> <span id="hero-nikkei-change"></span></div>
         <div>TOPIX <span class="font-bold" id="hero-topix-price">---</span> <span id="hero-topix-change"></span></div>
@@ -148,74 +148,74 @@
     </div>
   </section>
 
-  <main class="max-w-7xl mx-auto px-6 py-12">
+  <main class="max-w-7xl mx-auto px-6 py-12 bg-[#f0f0f0]">
     <!-- LINE CTA 条 -->
     <a href="https://line.me/R/ti/p/@981czbkb" 
-       class="block bg-[#00B900] hover:bg-[#009900] text-white text-center py-5 rounded-xl font-medium mb-12 shadow-lg transition" id="line-add-btn">
-      ✅ 毎週月曜朝8時 LINE直達　✅ チャート解説付きで即実践可能　✅ 登録無料・ブロック1秒
+       class="block bg-[#00B900] hover:bg-[#009900] text-white text-center py-5 rounded font-medium mb-12 shadow transition" id="line-add-btn">
+      毎週月曜朝8時 LINE直達　／　チャート解説付きで即実践可能　／　登録無料・ブロック1秒
     </a>
 
     <!-- 热门文章卡片网格（日本门户标配） -->
     <h2 class="text-2xl font-bold text-[#1a3c6e] mb-8">人気記事</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <a href="/blog/2026-kouhaitou-kabuka-ranking.html" class="group block">
-        <div class="overflow-hidden rounded-xl border border-gray-200">
-          <img src="/images/2026-kouhaitou-kabuka-ranking-thumb.svg" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" alt="">
+      <a href="/blog/2026-kouhaitou-kabuka-ranking.html" class="group block bg-white border border-gray-300 rounded overflow-hidden">
+        <div class="overflow-hidden">
+          <img src="/images/2026-kouhaitou-kabuka-ranking-thumb.svg" class="w-full h-48 object-cover group-hover:opacity-95 transition" alt="2026 高配当株 おすすめランキングTOP10">
         </div>
-        <div class="mt-4">
+        <div class="p-4">
           <span class="text-xs text-gray-500">2026.2.21</span>
           <h3 class="font-bold text-lg leading-snug mt-2 line-clamp-2 group-hover:text-[#1a3c6e]">2026 高配当株 おすすめランキングTOP10｜利回り4%以上プロ厳選</h3>
-          <span class="text-[#1a3c6e] mt-3 inline-block font-medium text-sm">詳しく見る →</span>
+          <span class="text-[#1a3c6e] mt-3 inline-block font-medium text-sm">詳しく見る</span>
         </div>
       </a>
-      <a href="/blog/nisa-osusume-meigara-2026.html" class="group block">
-        <div class="overflow-hidden rounded-xl border border-gray-200">
-          <img src="/images/nisa-osusume-meigara-2026-thumb.svg" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" alt="">
+      <a href="/blog/nisa-osusume-meigara-2026.html" class="group block bg-white border border-gray-300 rounded overflow-hidden">
+        <div class="overflow-hidden">
+          <img src="/images/nisa-osusume-meigara-2026-thumb.svg" class="w-full h-48 object-cover group-hover:opacity-95 transition" alt="2026 NISAおすすめ銘柄TOP10">
         </div>
-        <div class="mt-4">
+        <div class="p-4">
           <span class="text-xs text-gray-500">2026.2.20</span>
           <h3 class="font-bold text-lg leading-snug mt-2 line-clamp-2 group-hover:text-[#1a3c6e]">2026 NISAおすすめ銘柄TOP10｜成長投資枠プロ厳選・無料LINE</h3>
-          <span class="text-[#1a3c6e] mt-3 inline-block font-medium text-sm">詳しく見る →</span>
+          <span class="text-[#1a3c6e] mt-3 inline-block font-medium text-sm">詳しく見る</span>
         </div>
       </a>
-      <a href="/blog/tokyo-kouhaitou-2026.html" class="group block">
-        <div class="overflow-hidden rounded-xl border border-gray-200">
-          <img src="/images/tokyo-kouhaitou-2026-thumb.svg" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" alt="">
+      <a href="/blog/tokyo-kouhaitou-2026.html" class="group block bg-white border border-gray-300 rounded overflow-hidden">
+        <div class="overflow-hidden">
+          <img src="/images/tokyo-kouhaitou-2026-thumb.svg" class="w-full h-48 object-cover group-hover:opacity-95 transition" alt="東京 高配当株 2026">
         </div>
-        <div class="mt-4">
+        <div class="p-4">
           <span class="text-xs text-gray-500">2026.2.21</span>
           <h3 class="font-bold text-lg leading-snug mt-2 line-clamp-2 group-hover:text-[#1a3c6e]">東京で高配当株をお探しの方へ｜2026年本当に強い銘柄TOP10</h3>
-          <span class="text-[#1a3c6e] mt-3 inline-block font-medium text-sm">詳しく見る →</span>
+          <span class="text-[#1a3c6e] mt-3 inline-block font-medium text-sm">詳しく見る</span>
         </div>
       </a>
-      <a href="/blog/osaka-kouhaitou-2026.html" class="group block">
-        <div class="overflow-hidden rounded-xl border border-gray-200">
-          <img src="/images/osaka-kouhaitou-2026-thumb.svg" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" alt="">
+      <a href="/blog/osaka-kouhaitou-2026.html" class="group block bg-white border border-gray-300 rounded overflow-hidden">
+        <div class="overflow-hidden">
+          <img src="/images/osaka-kouhaitou-2026-thumb.svg" class="w-full h-48 object-cover group-hover:opacity-95 transition" alt="大阪 高配当株 2026">
         </div>
-        <div class="mt-4">
+        <div class="p-4">
           <span class="text-xs text-gray-500">2026.2.21</span>
           <h3 class="font-bold text-lg leading-snug mt-2 line-clamp-2 group-hover:text-[#1a3c6e]">大阪で本当に強い高配当株2026｜利回り4.5%以上プロ厳選</h3>
-          <span class="text-[#1a3c6e] mt-3 inline-block font-medium text-sm">詳しく見る →</span>
+          <span class="text-[#1a3c6e] mt-3 inline-block font-medium text-sm">詳しく見る</span>
         </div>
       </a>
-      <a href="/blog/nikkei-kouhaitou50-2026.html" class="group block">
-        <div class="overflow-hidden rounded-xl border border-gray-200">
-          <img src="/images/nikkei-kouhaitou50-2026-thumb.svg" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" alt="">
+      <a href="/blog/nikkei-kouhaitou50-2026.html" class="group block bg-white border border-gray-300 rounded overflow-hidden">
+        <div class="overflow-hidden">
+          <img src="/images/nikkei-kouhaitou50-2026-thumb.svg" class="w-full h-48 object-cover group-hover:opacity-95 transition" alt="日経平均高配当株50 2026">
         </div>
-        <div class="mt-4">
+        <div class="p-4">
           <span class="text-xs text-gray-500">2026.2.17</span>
           <h3 class="font-bold text-lg leading-snug mt-2 line-clamp-2 group-hover:text-[#1a3c6e]">日経平均高配当株50 2026｜おすすめ銘柄＆利回り公開無料LINE</h3>
-          <span class="text-[#1a3c6e] mt-3 inline-block font-medium text-sm">詳しく見る →</span>
+          <span class="text-[#1a3c6e] mt-3 inline-block font-medium text-sm">詳しく見る</span>
         </div>
       </a>
-      <a href="/blog/2026-bouraku-meigara-buy-opportunity.html" class="group block">
-        <div class="overflow-hidden rounded-xl border border-gray-200">
-          <img src="/images/2026-bouraku-meigara-thumb.svg" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" alt="">
+      <a href="/blog/2026-bouraku-meigara-buy-opportunity.html" class="group block bg-white border border-gray-300 rounded overflow-hidden">
+        <div class="overflow-hidden">
+          <img src="/images/2026-bouraku-meigara-thumb.svg" class="w-full h-48 object-cover group-hover:opacity-95 transition" alt="暴落銘柄 買い増しチャンス">
         </div>
-        <div class="mt-4">
+        <div class="p-4">
           <span class="text-xs text-gray-500">2026.2.21</span>
           <h3 class="font-bold text-lg leading-snug mt-2 line-clamp-2 group-hover:text-[#1a3c6e]">暴落した銘柄は買い増しチャンス？ソフトバンク・任天堂・INPEXを分析</h3>
-          <span class="text-[#1a3c6e] mt-3 inline-block font-medium text-sm">詳しく見る →</span>
+          <span class="text-[#1a3c6e] mt-3 inline-block font-medium text-sm">詳しく見る</span>
         </div>
       </a>
     </div>
@@ -234,7 +234,7 @@
       </div>
       
       <aside class="lg:col-span-4 space-y-6">
-        <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+        <div class="bg-white border border-gray-300 rounded p-6">
           <h4 class="font-bold text-lg text-[#1a3c6e] mb-4">今週の注目銘柄</h4>
           <div class="space-y-4 text-sm">
             <div class="flex justify-between items-center py-2 border-b border-gray-100">
@@ -257,7 +257,7 @@
           <p class="text-xs text-gray-500 mt-4">※ 毎週LINEで詳細を無料配信</p>
         </div>
         
-        <div class="bg-[#f8fbff] border border-[#1a3c6e]/20 rounded-2xl p-6">
+        <div class="bg-white border border-gray-300 rounded p-6">
           <h4 class="font-bold text-lg text-[#1a3c6e] mb-3">無料LINE登録</h4>
           <p class="text-sm text-gray-600 mb-4">毎週1銘柄をプロが厳選してお届け</p>
           <a href="https://line.me/R/ti/p/@981czbkb" class="block w-full bg-[#00B900] hover:bg-[#009900] text-white text-center py-3 rounded-lg font-medium text-sm">
@@ -267,7 +267,7 @@
       </aside>
     </div>
 
-    <div class="mt-12 p-6 border border-gray-200 rounded-xl text-sm text-gray-600 bg-gray-50">
+    <div class="mt-12 p-6 border border-gray-300 rounded text-sm text-gray-600 bg-white">
       <p><a href="/company.html" class="text-[#1a3c6e] hover:underline">運営会社・FSA登録番号はこちら</a></p>
       <p class="mt-4 text-xs">投資はリスクを伴い、元本保証はありません。過去の実績は将来の結果を保証するものではありません。</p>
     </div>

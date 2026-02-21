@@ -1,6 +1,8 @@
 /**
  * Netlify Function: Yahoo Finance API 代理
+ * 数据源：Yahoo Finance REST API（与 yfinance 相同）
  * 绕过浏览器 CORS 限制，稳定获取实时行情
+ * 行情栏：日経平均 ^N225, TOPIX ^TPX, 米ドル円 USDJPY=X, NYダウ ^DJI, 上海総合 000001.SS, 東証REIT ^JPXREIT
  */
 exports.handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') {
