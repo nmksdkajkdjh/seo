@@ -28,7 +28,7 @@ export default async (request, context) => {
   let metaDesc =
     "2026年最新高配当株ランキングをプロが厳選。NISA対応・毎週無料レポートをLINE配信中。";
   let ctaText = "LINEで今すぐ無料登録する";
-  let heroImage = "/images/2026-kouhaitou-kabuka-ranking-thumb.svg"; // 默认全国版，可替换为 hero-national.jpg
+  let heroImage = "/images/2026-kouhaitou-kabuka-ranking-thumb.jpg"; // 全国版
 
   if (showLocalized) {
     if (

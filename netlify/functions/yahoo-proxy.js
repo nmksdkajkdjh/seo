@@ -1,52 +1,70 @@
 /**
- * Netlify Function: Yahoo Finance API 代理
- * 数据源：Yahoo Finance REST API（与 yfinance 相同）
- * 绕过浏览器 CORS 限制，稳定获取实时行情
- * 行情栏：日経平均 ^N225, TOPIX ^TPX, 米ドル円 USDJPY=X, NYダウ ^DJI, 上海総合 000001.SS, 東証REIT ^JPXREIT
+ * Netlify Function: 行情数据代理
+ * 优先 Yahoo v7 quote，失败时回退到 v8 chart
  */
+const SYMBOLS = ['^N225', '^TPX', 'USDJPY=X', '^DJI', '000001.SS', '^JPXREIT'];
+const ID_MAP = { '^N225': 'nikkei', '^TPX': 'topix', 'USDJPY=X': 'usdjpy', '^DJI': 'nydow', '000001.SS': 'shanghai', '^JPXREIT': 'reit' };
+const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+
+async function fetchV7() {
+  const url = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${SYMBOLS.join(',')}`;
+  const res = await fetch(url, {
+    headers: { 'User-Agent': UA, 'Accept': 'application/json', 'Accept-Language': 'en-US,en;q=0.9' }
+  });
+  const data = await res.json();
+  const list = data?.quoteResponse?.result || [];
+  if (list.length > 0) return list;
+  return null;
+}
+
+async function fetchV8Chart(symbol) {
+  const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?interval=1d&range=5d`;
+  const res = await fetch(url, {
+    headers: { 'User-Agent': UA, 'Accept': 'application/json' }
+  });
+  const data = await res.json();
+  const chart = data?.chart?.result?.[0];
+  if (!chart) return null;
+  const quote = chart.indicators?.quote?.[0];
+  const meta = chart.meta;
+  if (!quote || !quote.close) return null;
+  const closes = quote.close.filter(Boolean);
+  const last = closes[closes.length - 1];
+  const prev = closes.length > 1 ? closes[closes.length - 2] : last;
+  const ch = last - prev;
+  const pct = prev ? (ch / prev) * 100 : 0;
+  return {
+    symbol: meta?.symbol || symbol,
+    regularMarketPrice: last,
+    regularMarketChange: ch,
+    regularMarketChangePercent: pct
+  };
+}
+
+async function fetchV8Fallback() {
+  const results = [];
+  for (const sym of SYMBOLS) {
+    try {
+      const q = await fetchV8Chart(sym);
+      if (q) results.push(q);
+    } catch (_) {}
+  }
+  return results.length > 0 ? results : null;
+}
+
 exports.handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') {
-    return {
-      statusCode: 204,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Max-Age': '86400'
-      },
-      body: ''
-    };
+    return { statusCode: 204, headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Max-Age': '86400' }, body: '' };
   }
-
-  const symbols = event.queryStringParameters?.symbols || '^N225,^TPX,USDJPY=X,^DJI,000001.SS,^JPXREIT';
-
+  const headers = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Cache-Control': 'public, max-age=60' };
   try {
-    const res = await fetch(
-      `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${encodeURIComponent(symbols)}`,
-      {
-        headers: {
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-        }
-      }
-    );
-    const data = await res.json();
-
-    return {
-      statusCode: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Cache-Control': 'public, max-age=30'
-      },
-      body: JSON.stringify(data)
-    };
-  } catch (error) {
-    return {
-      statusCode: 500,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      },
-      body: JSON.stringify({ error: 'Proxy failed' })
-    };
+    let list = await fetchV7();
+    if (!list || list.length === 0) list = await fetchV8Fallback();
+    if (!list || list.length === 0) {
+      return { statusCode: 200, headers, body: JSON.stringify({ quoteResponse: { result: [] }, fallback: true }) };
+    }
+    return { statusCode: 200, headers, body: JSON.stringify({ quoteResponse: { result: list } }) };
+  } catch (e) {
+    return { statusCode: 500, headers, body: JSON.stringify({ error: 'Proxy failed', quoteResponse: { result: [] } }) };
   }
 };
