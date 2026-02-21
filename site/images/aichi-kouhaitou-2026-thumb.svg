@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="288" height="192" viewBox="0 0 288 192">
-  <rect fill="#1a3c6e" width="288" height="192"/>
-  <text x="144" y="82" fill="white" font-family="Meiryo, Hiragino Sans, Yu Gothic, sans-serif" font-size="16" text-anchor="middle" font-weight="bold">?? ???? 2026</text>
-  <text x="144" y="108" fill="white" font-family="Meiryo, Hiragino Sans, Yu Gothic, sans-serif" font-size="14" text-anchor="middle">????????</text>
-  <text x="144" y="136" fill="rgba(255,255,255,0.85)" font-family="Meiryo, Hiragino Sans, Yu Gothic, sans-serif" font-size="12" text-anchor="middle">?????? TOP10</text>
+  <rect width="288" height="192" fill="#1a3c6e"/>
+  <circle cx="144" cy="90" r="30" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="2"/>
+  <rect x="70" y="125" width="25" height="50" fill="rgba(0,185,0,0.5)" rx="2"/>
+  <rect x="193" y="120" width="25" height="55" fill="rgba(0,185,0,0.5)" rx="2"/>
+  <text x="144" y="165" fill="white" font-family="Arial,sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Aichi 2026</text>
+  <text x="144" y="180" fill="rgba(255,255,255,0.8)" font-family="Arial,sans-serif" font-size="10" text-anchor="middle">TOP10</text>
 </svg>

@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="288" height="192" viewBox="0 0 288 192">
-  <rect fill="#1a3c6e" width="288" height="192"/>
-  <text x="144" y="82" fill="white" font-family="Meiryo, sans-serif" font-size="16" text-anchor="middle" font-weight="bold">?? ????</text>
-  <text x="144" y="108" fill="white" font-family="Meiryo, sans-serif" font-size="14" text-anchor="middle">2026? ??????? TOP10</text>
-  <text x="144" y="136" fill="rgba(255,255,255,0.85)" font-family="Meiryo, sans-serif" font-size="12" text-anchor="middle">????????</text>
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a3c6e"/>
+      <stop offset="70%" style="stop-color:#1a3c6e"/>
+      <stop offset="100%" style="stop-color:#0f2847"/>
+    </linearGradient>
+  </defs>
+  <rect width="288" height="192" fill="url(#bg3)"/>
+  <!-- Tokyo tower silhouette -->
+  <polygon points="144,40 124,140 164,140" fill="rgba(255,255,255,0.15)"/>
+  <rect x="138" y="140" width="12" height="35" fill="rgba(255,255,255,0.2)"/>
+  <!-- Skyline bars -->
+  <rect x="20" y="100" width="35" height="75" fill="rgba(255,255,255,0.08)" rx="1"/>
+  <rect x="60" y="85" width="30" height="90" fill="rgba(255,255,255,0.1)" rx="1"/>
+  <rect x="95" y="95" width="28" height="80" fill="rgba(255,255,255,0.08)" rx="1"/>
+  <rect x="198" y="90" width="30" height="85" fill="rgba(255,255,255,0.08)" rx="1"/>
+  <rect x="233" y="100" width="35" height="75" fill="rgba(255,255,255,0.1)" rx="1"/>
+  <text x="144" y="160" fill="white" font-family="Arial,sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Tokyo 2026</text>
+  <text x="144" y="176" fill="rgba(255,255,255,0.75)" font-family="Arial,sans-serif" font-size="10" text-anchor="middle">TOP10</text>
 </svg>

@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="288" height="192" viewBox="0 0 288 192">
-  <rect fill="#1a3c6e" width="288" height="192"/>
-  <text x="144" y="82" fill="white" font-family="Meiryo, sans-serif" font-size="15" text-anchor="middle" font-weight="bold">??????????????</text>
-  <text x="144" y="110" fill="white" font-family="Meiryo, sans-serif" font-size="13" text-anchor="middle">???????????INPEX</text>
-  <text x="144" y="138" fill="rgba(255,255,255,0.85)" font-family="Meiryo, sans-serif" font-size="12" text-anchor="middle">???? 2026</text>
+  <defs>
+    <linearGradient id="bg7" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a1a2e"/>
+      <stop offset="100%" style="stop-color:#1a3c6e"/>
+    </linearGradient>
+    <linearGradient id="recovery" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#cc0000;stop-opacity:0.6"/>
+      <stop offset="50%" style="stop-color:#ff6600;stop-opacity:0.4"/>
+      <stop offset="100%" style="stop-color:#00B900;stop-opacity:0.8"/>
+    </linearGradient>
+  </defs>
+  <rect width="288" height="192" fill="url(#bg7)"/>
+  <!-- V-shaped recovery chart -->
+  <path d="M 50 60 L 144 150 L 238 55" fill="none" stroke="url(#recovery)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="50" cy="60" r="5" fill="#cc0000"/>
+  <circle cx="144" cy="150" r="5" fill="#ff6600"/>
+  <circle cx="238" cy="55" r="5" fill="#00B900"/>
+  <!-- Arrow up -->
+  <polygon points="230,90 240,70 250,90" fill="#00B900"/>
+  <text x="144" y="175" fill="rgba(255,255,255,0.9)" font-family="Arial,sans-serif" font-size="12" font-weight="bold" text-anchor="middle">Buy Opportunity 2026</text>
 </svg>
