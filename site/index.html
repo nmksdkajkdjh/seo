@@ -7,89 +7,269 @@
   <title>日経平均高配当株50 2026｜おすすめ銘柄＆利回り公開無料LINE</title>
   <meta name="description" content="2026年2月最新高配当株ランキングTOP10をプロが厳選。日経平均高配当株50対応・利回り4%以上・NISA成長投資枠対応。毎週無料レポートをLINE配信中。登録者32,000人突破。投資はリスクを伴い元本保証はありません。">
   <link rel="canonical" href="https://kouhaitou.jp/">
+  <link rel="alternate" hreflang="ja" href="https://kouhaitou.jp/">
+  <meta name="geo.region" content="JP">
+  <meta property="og:title" content="日経平均高配当株50 2026｜おすすめ銘柄＆利回り公開無料LINE">
+  <meta property="og:description" content="プロが厳選した高配当株を毎週無料LINE配信。登録者32,000人突破。NISA・利回り4%以上対応。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kouhaitou.jp/">
+  <meta property="og:image" content="https://kouhaitou.jp/images/blog-og.jpg">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="日経平均高配当株50 2026｜おすすめ銘柄無料LINE配信">
   <script src="https://cdn.tailwindcss.com"></script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebPage","name":"株 推奨銘柄 無料LINE配信","description":"日経平均高配当株50対応・プロ厳選銘柄無料配信","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}}
+  {"@context":"https://schema.org","@type":"WebPage","name":"株 推奨銘柄 無料LINE配信","description":"日経平均高配当株50対応・プロ厳選銘柄無料配信","inLanguage":"ja","about":{"@type":"Place","name":"日本"},"offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}}
   </script>
   <style>
     body { font-family: "メイリオ", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif; }
+    input, select, textarea { font-size: 16px; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
   </style>
 </head>
 <body class="bg-white text-gray-800">
 
-  <div class="bg-[#1a3c6e] text-white text-xs py-2">
-    <div class="max-w-6xl mx-auto px-6 flex justify-between items-center flex-wrap gap-2">
+  <!-- Kabutan风格：顶部合规栏 -->
+  <div class="bg-[#1a3c6e] text-white text-xs py-1.5">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center flex-wrap gap-2">
       <div>投資はリスクを伴い、元本保証はありません。過去の実績は将来の結果を保証するものではありません。</div>
+      <div class="text-right"><a href="/company.html" class="hover:underline">FSA投資助言業登録済</a></div>
     </div>
   </div>
 
-  <header class="border-b">
-    <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between flex-wrap gap-4">
-      <a href="/" class="flex items-center gap-4">
-        <span class="text-2xl md:text-3xl font-bold tracking-tight text-[#1a3c6e]">株情報無料配信</span>
-        <span class="text-sm text-gray-500 pt-1">プロの目線で</span>
-      </a>
-      <nav class="flex items-center gap-6 md:gap-8 text-sm font-medium">
-        <a href="/" class="text-[#1a3c6e] font-bold border-b-2 border-[#1a3c6e] pb-0.5">ホーム</a>
-        <a href="/blog/" class="hover:text-[#1a3c6e]">ブログ</a>
-        <a href="/company.html" class="hover:text-[#1a3c6e]">会社概要</a>
-        <a href="/law.html" class="hover:text-[#1a3c6e]">特定商取引法</a>
-        <a href="/privacy.html" class="hover:text-[#1a3c6e]">プライバシー</a>
-      </nav>
-      <a href="https://line.me/R/ti/p/@981czbkb" 
-         class="bg-[#00B900] hover:bg-[#009900] text-white px-8 py-3 rounded text-sm font-medium transition">
-        LINEで無料登録する
-      </a>
+  <!-- Kabutan风格：主Header + 实时行情 + 搜索 -->
+  <header class="bg-white border-b shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+      <div class="flex flex-col lg:flex-row lg:items-center gap-4">
+        <div class="flex items-center justify-between w-full lg:w-auto">
+          <a href="/" class="flex items-center gap-3 flex-shrink-0">
+            <span class="text-2xl md:text-3xl font-bold tracking-tight text-[#1a3c6e]">株情報無料配信</span>
+            <span class="text-xs text-gray-500 pt-1 hidden sm:inline">プロの目線で</span>
+          </a>
+          <div class="flex items-center gap-2 lg:hidden">
+            <a href="https://line.me/R/ti/p/@981czbkb" class="bg-[#00B900] hover:bg-[#009900] text-white px-4 py-2 rounded text-sm font-medium">LINE</a>
+            <button type="button" id="nav-toggle" class="p-2 rounded hover:bg-gray-100" aria-label="メニュー">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 实时行情栏（更多指数 + 移动端横向滚动） -->
+        <div id="market-ticker" class="flex-1 overflow-x-auto scrollbar-hide -mx-2 min-w-0 hidden md:block">
+          <div class="flex items-center gap-6 lg:gap-8 whitespace-nowrap text-sm min-w-max px-2">
+            <div><span class="font-medium">日経平均</span> <span class="ml-2 text-lg font-bold" id="nikkei-price">---</span> <span class="ml-2 text-sm" id="nikkei-change"></span></div>
+            <div><span class="font-medium">TOPIX</span> <span class="ml-2 text-lg font-bold" id="topix-price">---</span> <span class="ml-2 text-sm" id="topix-change"></span></div>
+            <div><span class="font-medium">米ドル円</span> <span class="ml-2 text-lg font-bold" id="usdjpy-price">---</span> <span class="ml-2 text-sm" id="usdjpy-change"></span></div>
+            <div><span class="font-medium">NYダウ</span> <span class="ml-2 text-lg font-bold" id="nydow-price">---</span> <span class="ml-2 text-sm" id="nydow-change"></span></div>
+            <div><span class="font-medium">上海総合</span> <span class="ml-2 text-lg font-bold" id="shanghai-price">---</span> <span class="ml-2 text-sm" id="shanghai-change"></span></div>
+            <div><span class="font-medium">東証REIT</span> <span class="ml-2 text-lg font-bold" id="reit-price">---</span> <span class="ml-2 text-sm" id="reit-change"></span></div>
+          </div>
+        </div>
+
+        <div id="search-wrapper" class="hidden md:flex items-center gap-3 sm:gap-4 flex-shrink-0">
+          <div class="flex-1 max-w-xs sm:max-w-md relative">
+            <input type="text" id="global-search" 
+                   class="w-full bg-gray-100 border border-gray-300 rounded-full py-2.5 sm:py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-[#1a3c6e] placeholder:text-gray-500"
+                   placeholder="銘柄コード・企業名で検索">
+            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
+            <div id="search-suggestions" class="hidden absolute w-full bg-white border border-gray-300 rounded-xl shadow-lg mt-1 z-50 max-h-80 overflow-auto top-full left-0"></div>
+          </div>
+          <a href="https://line.me/R/ti/p/@981czbkb" class="bg-[#00B900] hover:bg-[#009900] text-white px-6 sm:px-8 py-3 rounded text-sm font-medium transition whitespace-nowrap">
+            LINE登録
+          </a>
+        </div>
+      </div>
     </div>
+
+    <!-- 二级导航 + 移动端折叠菜单 -->
+    <div id="nav-mobile" class="lg:hidden hidden border-t bg-gray-50">
+      <div class="px-6 py-4 space-y-2">
+        <a href="/" class="block py-3 font-bold text-[#1a3c6e] border-b border-gray-200">トップ</a>
+        <a href="/blog/" class="block py-3 hover:text-[#1a3c6e] border-b border-gray-200">ブログ</a>
+        <a href="/search/" class="block py-3 hover:text-[#1a3c6e] border-b border-gray-200">🔍 検索</a>
+        <a href="/company.html" class="block py-3 hover:text-[#1a3c6e] border-b border-gray-200">会社概要</a>
+        <a href="/law.html" class="block py-3 hover:text-[#1a3c6e] border-b border-gray-200">特定商取引法</a>
+        <a href="/privacy.html" class="block py-3 hover:text-[#1a3c6e]">プライバシー</a>
+        <a href="https://line.me/R/ti/p/@981czbkb" class="block w-full bg-[#00B900] hover:bg-[#009900] text-white text-center py-4 rounded-xl font-medium mt-4">LINEで無料登録</a>
+      </div>
+    </div>
+    <nav class="border-t bg-white hidden lg:block">
+      <div class="max-w-7xl mx-auto px-6">
+        <ul class="flex items-center text-sm font-medium h-11 overflow-x-auto">
+          <li class="px-4 sm:px-6 border-b-2 border-[#1a3c6e] text-[#1a3c6e] font-bold flex-shrink-0"><a href="/">トップ</a></li>
+          <li class="px-4 sm:px-6 hover:text-[#1a3c6e] flex-shrink-0"><a href="/blog/">ブログ</a></li>
+          <li class="px-4 sm:px-6 hover:text-[#1a3c6e] flex-shrink-0"><a href="/company.html">会社概要</a></li>
+          <li class="px-4 sm:px-6 hover:text-[#1a3c6e] flex-shrink-0"><a href="/law.html">特定商取引法</a></li>
+          <li class="px-4 sm:px-6 hover:text-[#1a3c6e] flex-shrink-0"><a href="/privacy.html">プライバシー</a></li>
+        </ul>
+      </div>
+    </nav>
   </header>
 
-  <section class="border-b bg-[#f8fbff] pt-16 pb-20">
-    <div class="max-w-5xl mx-auto px-6 text-center">
-      <p class="text-sm text-gray-600 mb-4">登録者数 32,000人突破</p>
-      <h1 class="text-3xl md:text-4xl font-bold leading-tight text-[#1a3c6e] mb-6">
-        なぜあなたの株は上がらないのか？<br>
-        <span class="text-[#1a3c6e]">プロが毎週1銘柄厳選して無料でお届けします</span>
-      </h1>
-      <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-10">
-        元証券アナリストが選ぶ高配当株・NISA対応銘柄を<br>
-        LINEで毎週月曜朝8時にお届け。チャート解説付きで初心者でもすぐ実践可能。
-      </p>
-      <a href="https://line.me/R/ti/p/@981czbkb" 
-         class="inline-block bg-[#00B900] hover:bg-[#009900] text-white text-lg font-medium px-12 py-5 rounded border border-[#009900] transition mb-8">
-        LINEで今すぐ無料登録する
-      </a>
-      <div class="flex flex-wrap justify-center gap-8 text-sm text-gray-500">
-        <div>元証券アナリスト運営</div>
-        <div>FSA投資助言業登録済</div>
-        <div>いつでもブロックOK</div>
+  <!-- Hero区 - 日本门户风格（大图背景 + 叠加文字 + 右下行情小条） -->
+  <section class="relative min-h-[460px] md:min-h-[560px] flex items-center bg-cover bg-center bg-no-repeat hero-section" 
+           style="background-image: linear-gradient(to right, rgba(0,0,0,0.75), rgba(0,0,0,0.5), transparent), url('/images/hero-main.jpg'), linear-gradient(135deg, #1a3c6e 0%, #2d5a9e 40%, #1a3c6e 100%);">
+    <img id="geo-hero-image" src="/images/2026-kouhaitou-kabuka-ranking-thumb.svg" class="absolute inset-0 w-full h-full object-cover opacity-15 pointer-events-none" alt="" aria-hidden="true">
+    <div class="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-transparent"></div>
+
+    <div class="relative max-w-7xl mx-auto px-6 w-full z-10 py-16">
+      <div class="max-w-2xl text-white">
+        <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-5 py-2 rounded-full text-sm mb-6">
+          <span class="text-green-400">●</span>
+          登録者32,000人突破
+        </div>
+        
+        <h1 id="geo-hero-title" class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+          なぜあなたの株は<br>上がらないのか？
+        </h1>
+        
+        <p class="text-xl md:text-2xl mb-10 text-white/90">
+          元証券アナリストが毎週厳選した<br>
+          <span class="text-[#00B900] font-bold">高配当株・NISAおすすめ銘柄</span>を<br>
+          無料でLINEにお届けします
+        </p>
+
+        <a id="geo-cta-hero" href="https://line.me/R/ti/p/@981czbkb" 
+           class="inline-block bg-[#00B900] hover:bg-[#00A000] text-white text-xl md:text-2xl font-medium px-12 md:px-16 py-5 md:py-6 rounded-2xl shadow-2xl transition transform hover:scale-[1.02]">
+          LINEで今すぐ無料登録する
+        </a>
+        
+        <p class="text-white/70 text-sm mt-8">毎週月曜朝8時更新・いつでもブロックOK</p>
       </div>
-      <p class="mt-8 text-xs text-gray-500">
-        投資はリスクを伴い、元本保証はありません。過去の実績は将来の結果を保証するものではありません。
-      </p>
+    </div>
+
+    <div class="absolute bottom-8 right-6 md:right-10 bg-white/95 backdrop-blur-md text-gray-800 rounded-2xl shadow-2xl px-5 md:px-7 py-3 md:py-4 hidden lg:block z-10">
+      <div class="flex gap-6 md:gap-8 text-sm font-medium">
+        <div>日経平均 <span class="font-bold" id="hero-nikkei-price">---</span> <span id="hero-nikkei-change"></span></div>
+        <div>TOPIX <span class="font-bold" id="hero-topix-price">---</span> <span id="hero-topix-change"></span></div>
+      </div>
     </div>
   </section>
 
-  <main class="max-w-5xl mx-auto px-6 py-12">
-    <h2 class="text-2xl font-bold text-[#1a3c6e] mb-6">登録者32,000人が実践中の無料銘柄レポート</h2>
-    <p class="text-gray-600 mb-8">✅ 毎週月曜朝8時 LINE直達　✅ チャート解説付きで即実践可能　✅ 登録無料・ブロック1秒</p>
-
+  <main class="max-w-7xl mx-auto px-6 py-12">
+    <!-- LINE CTA 条 -->
     <a href="https://line.me/R/ti/p/@981czbkb" 
-       class="line-btn block bg-[#00B900] hover:bg-[#009900] text-white text-center py-5 rounded font-medium mb-12 border border-[#009900] transition" id="line-add-btn">
-      LINEで今すぐ無料登録する
+       class="block bg-[#00B900] hover:bg-[#009900] text-white text-center py-5 rounded-xl font-medium mb-12 shadow-lg transition" id="line-add-btn">
+      ✅ 毎週月曜朝8時 LINE直達　✅ チャート解説付きで即実践可能　✅ 登録無料・ブロック1秒
     </a>
 
-    <h2 class="text-2xl font-bold text-[#1a3c6e] mb-6">関連記事</h2>
-    <ul class="space-y-3">
-      <li><a href="/blog/2025-nikkei-review.html" class="text-[#1a3c6e] hover:underline">2025年日本株式市場を振り返る～20年の経験から見えた教訓と2026年の展望～</a></li>
-      <li><a href="/blog/nikkei-kouhaitou50-2026.html" class="text-[#1a3c6e] hover:underline">日経平均高配当株50 2026｜おすすめ銘柄＆利回り公開無料LINE</a></li>
-      <li><a href="/blog/2026-kouhaitou-kabuka-ranking.html" class="text-[#1a3c6e] hover:underline">2026 高配当株 おすすめランキングTOP10｜利回り4%以上プロ厳選無料</a></li>
-      <li><a href="/blog/nisa-osusume-meigara-2026.html" class="text-[#1a3c6e] hover:underline">2026 NISAおすすめ銘柄TOP10｜成長投資枠プロ厳選・無料LINE</a></li>
-      <li><a href="/blog/kabusui-osusume-2026.html" class="text-[#1a3c6e] hover:underline">2026 配当株 おすすめランキング｜初心者NISAで安定収入プロ厳選</a></li>
-      <li><a href="/blog/kabushiki-suishou-meigara-muryou.html" class="text-[#1a3c6e] hover:underline">元アナリストが無料で株推奨銘柄配信｜2026最新レポート</a></li>
-    </ul>
+    <!-- 热门文章卡片网格（日本门户标配） -->
+    <h2 class="text-2xl font-bold text-[#1a3c6e] mb-8">人気記事</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <a href="/blog/2026-kouhaitou-kabuka-ranking.html" class="group block">
+        <div class="overflow-hidden rounded-xl border border-gray-200">
+          <img src="/images/2026-kouhaitou-kabuka-ranking-thumb.svg" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" alt="">
+        </div>
+        <div class="mt-4">
+          <span class="text-xs text-gray-500">2026.2.21</span>
+          <h3 class="font-bold text-lg leading-snug mt-2 line-clamp-2 group-hover:text-[#1a3c6e]">2026 高配当株 おすすめランキングTOP10｜利回り4%以上プロ厳選</h3>
+          <span class="text-[#1a3c6e] mt-3 inline-block font-medium text-sm">詳しく見る →</span>
+        </div>
+      </a>
+      <a href="/blog/nisa-osusume-meigara-2026.html" class="group block">
+        <div class="overflow-hidden rounded-xl border border-gray-200">
+          <img src="/images/nisa-osusume-meigara-2026-thumb.svg" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" alt="">
+        </div>
+        <div class="mt-4">
+          <span class="text-xs text-gray-500">2026.2.20</span>
+          <h3 class="font-bold text-lg leading-snug mt-2 line-clamp-2 group-hover:text-[#1a3c6e]">2026 NISAおすすめ銘柄TOP10｜成長投資枠プロ厳選・無料LINE</h3>
+          <span class="text-[#1a3c6e] mt-3 inline-block font-medium text-sm">詳しく見る →</span>
+        </div>
+      </a>
+      <a href="/blog/tokyo-kouhaitou-2026.html" class="group block">
+        <div class="overflow-hidden rounded-xl border border-gray-200">
+          <img src="/images/tokyo-kouhaitou-2026-thumb.svg" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" alt="">
+        </div>
+        <div class="mt-4">
+          <span class="text-xs text-gray-500">2026.2.21</span>
+          <h3 class="font-bold text-lg leading-snug mt-2 line-clamp-2 group-hover:text-[#1a3c6e]">東京で高配当株をお探しの方へ｜2026年本当に強い銘柄TOP10</h3>
+          <span class="text-[#1a3c6e] mt-3 inline-block font-medium text-sm">詳しく見る →</span>
+        </div>
+      </a>
+      <a href="/blog/osaka-kouhaitou-2026.html" class="group block">
+        <div class="overflow-hidden rounded-xl border border-gray-200">
+          <img src="/images/osaka-kouhaitou-2026-thumb.svg" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" alt="">
+        </div>
+        <div class="mt-4">
+          <span class="text-xs text-gray-500">2026.2.21</span>
+          <h3 class="font-bold text-lg leading-snug mt-2 line-clamp-2 group-hover:text-[#1a3c6e]">大阪で本当に強い高配当株2026｜利回り4.5%以上プロ厳選</h3>
+          <span class="text-[#1a3c6e] mt-3 inline-block font-medium text-sm">詳しく見る →</span>
+        </div>
+      </a>
+      <a href="/blog/nikkei-kouhaitou50-2026.html" class="group block">
+        <div class="overflow-hidden rounded-xl border border-gray-200">
+          <img src="/images/nikkei-kouhaitou50-2026-thumb.svg" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" alt="">
+        </div>
+        <div class="mt-4">
+          <span class="text-xs text-gray-500">2026.2.17</span>
+          <h3 class="font-bold text-lg leading-snug mt-2 line-clamp-2 group-hover:text-[#1a3c6e]">日経平均高配当株50 2026｜おすすめ銘柄＆利回り公開無料LINE</h3>
+          <span class="text-[#1a3c6e] mt-3 inline-block font-medium text-sm">詳しく見る →</span>
+        </div>
+      </a>
+      <a href="/blog/2026-bouraku-meigara-buy-opportunity.html" class="group block">
+        <div class="overflow-hidden rounded-xl border border-gray-200">
+          <img src="/images/2026-bouraku-meigara-thumb.svg" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" alt="">
+        </div>
+        <div class="mt-4">
+          <span class="text-xs text-gray-500">2026.2.21</span>
+          <h3 class="font-bold text-lg leading-snug mt-2 line-clamp-2 group-hover:text-[#1a3c6e]">暴落した銘柄は買い増しチャンス？ソフトバンク・任天堂・INPEXを分析</h3>
+          <span class="text-[#1a3c6e] mt-3 inline-block font-medium text-sm">詳しく見る →</span>
+        </div>
+      </a>
+    </div>
 
-    <div class="mt-12 p-6 border border-gray-200 text-sm text-gray-600">
+    <!-- 主内容 + 侧边栏 -->
+    <div class="mt-16 grid grid-cols-1 lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-8">
+        <h2 class="text-xl font-bold text-[#1a3c6e] mb-6">その他の記事</h2>
+        <ul class="space-y-4">
+          <li><a href="/blog/2025-nikkei-review.html" class="text-[#1a3c6e] hover:underline font-medium">2025年日本株式市場を振り返る～20年の経験から見えた教訓と2026年の展望～</a></li>
+          <li><a href="/blog/aichi-kouhaitou-2026.html" class="text-[#1a3c6e] hover:underline font-medium">愛知で強い高配当株2026｜製造業投資家向けおすすめ銘柄</a></li>
+          <li><a href="/blog/kabusui-osusume-2026.html" class="text-[#1a3c6e] hover:underline font-medium">2026 配当株 おすすめランキング｜初心者NISAで安定収入プロ厳選</a></li>
+          <li><a href="/blog/kabushiki-suishou-meigara-muryou.html" class="text-[#1a3c6e] hover:underline font-medium">元アナリストが無料で株推奨銘柄配信｜2026最新レポート</a></li>
+        </ul>
+        <p class="mt-8"><a href="/blog/" class="text-[#1a3c6e] hover:underline font-medium">ブログ一覧を見る →</a></p>
+      </div>
+      
+      <aside class="lg:col-span-4 space-y-6">
+        <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+          <h4 class="font-bold text-lg text-[#1a3c6e] mb-4">今週の注目銘柄</h4>
+          <div class="space-y-4 text-sm">
+            <div class="flex justify-between items-center py-2 border-b border-gray-100">
+              <span class="font-medium">三菱UFJ</span>
+              <span class="text-green-600 font-bold">+2.3%</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b border-gray-100">
+              <span class="font-medium">日本たばこ産業</span>
+              <span class="text-green-600 font-bold">+1.8%</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b border-gray-100">
+              <span class="font-medium">東京ガス</span>
+              <span class="text-red-600 font-bold">-0.5%</span>
+            </div>
+            <div class="flex justify-between items-center py-2">
+              <span class="font-medium">KDDI</span>
+              <span class="text-green-600 font-bold">+1.2%</span>
+            </div>
+          </div>
+          <p class="text-xs text-gray-500 mt-4">※ 毎週LINEで詳細を無料配信</p>
+        </div>
+        
+        <div class="bg-[#f8fbff] border border-[#1a3c6e]/20 rounded-2xl p-6">
+          <h4 class="font-bold text-lg text-[#1a3c6e] mb-3">無料LINE登録</h4>
+          <p class="text-sm text-gray-600 mb-4">毎週1銘柄をプロが厳選してお届け</p>
+          <a href="https://line.me/R/ti/p/@981czbkb" class="block w-full bg-[#00B900] hover:bg-[#009900] text-white text-center py-3 rounded-lg font-medium text-sm">
+            LINEで無料登録する
+          </a>
+        </div>
+      </aside>
+    </div>
+
+    <div class="mt-12 p-6 border border-gray-200 rounded-xl text-sm text-gray-600 bg-gray-50">
       <p><a href="/company.html" class="text-[#1a3c6e] hover:underline">運営会社・FSA登録番号はこちら</a></p>
+      <p class="mt-4 text-xs">投資はリスクを伴い、元本保証はありません。過去の実績は将来の結果を保証するものではありません。</p>
     </div>
   </main>
 
@@ -127,5 +307,90 @@
       </div>
     </div>
   </footer>
+
+  <script>
+  // ==================== 实时行情（Yahoo Finance API） ====================
+  const symbols = '^N225,^TPX,USDJPY=X,^DJI,000001.SS,^JPXREIT';
+  async function fetchMarketData() {
+    try {
+      const res = await fetch('/.netlify/functions/yahoo-proxy?symbols=' + encodeURIComponent(symbols));
+      if (!res.ok) throw new Error('API Error');
+      const data = await res.json();
+      const q = data.quoteResponse?.result;
+      if (!q || q.length < 6) throw new Error('No data');
+      updateTicker('nikkei', q[0]);
+      updateTicker('topix', q[1]);
+      updateTicker('usdjpy', q[2]);
+      updateTicker('nydow', q[3]);
+      updateTicker('shanghai', q[4]);
+      updateTicker('reit', q[5]);
+    } catch (e) {
+      console.warn('行情API获取失败');
+    }
+  }
+  function updateTicker(id, quote) {
+    const priceEl = document.getElementById(id + '-price');
+    const changeEl = document.getElementById(id + '-change');
+    if (!priceEl || !changeEl) return;
+    const p = quote?.regularMarketPrice;
+    const ch = quote?.regularMarketChange ?? 0;
+    const pct = quote?.regularMarketChangePercent ?? 0;
+    const priceStr = p != null ? p.toLocaleString() : '---';
+    const changeStr = p != null ? `${ch >= 0 ? '+' : ''}${ch.toFixed(2)} (${ch >= 0 ? '+' : ''}${pct.toFixed(2)}%)` : '';
+    priceEl.textContent = priceStr;
+    changeEl.textContent = changeStr;
+    changeEl.className = 'ml-2 text-sm ' + (ch >= 0 ? 'text-green-600' : 'text-red-600');
+    var heroPrice = document.getElementById('hero-' + id + '-price');
+    var heroChange = document.getElementById('hero-' + id + '-change');
+    if (heroPrice) heroPrice.textContent = priceStr;
+    if (heroChange) { heroChange.textContent = changeStr; heroChange.className = ch >= 0 ? 'text-green-600' : 'text-red-600'; }
+  }
+  setInterval(fetchMarketData, 30000);
+  fetchMarketData();
+
+  // ==================== 搜索框 ====================
+  document.getElementById('nav-toggle')?.addEventListener('click', function() {
+    var m = document.getElementById('nav-mobile');
+    if (m) m.classList.toggle('hidden');
+  });
+
+  (function(){
+    const inp = document.getElementById('global-search');
+    const box = document.getElementById('search-suggestions');
+    const wrapper = document.getElementById('search-wrapper');
+    if (!inp || !box) return;
+
+    inp.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        const q = this.value.trim();
+        if (q) location.href = '/search/?q=' + encodeURIComponent(q);
+      }
+    });
+
+    inp.addEventListener('input', function() {
+      const q = this.value.trim();
+      if (q.length < 2) { box.classList.add('hidden'); return; }
+      // 简易补全：博客关键词匹配（Yahoo API 有 CORS 限制时使用）
+      const items = [
+        {label:'高配当株',url:'/blog/2026-kouhaitou-kabuka-ranking.html'},
+        {label:'NISA',url:'/blog/nisa-osusume-meigara-2026.html'},
+        {label:'日経平均高配当株50',url:'/blog/nikkei-kouhaitou50-2026.html'},
+        {label:'東京 高配当株',url:'/blog/tokyo-kouhaitou-2026.html'},
+        {label:'大阪 高配当株',url:'/blog/osaka-kouhaitou-2026.html'},
+        {label:'愛知 高配当株',url:'/blog/aichi-kouhaitou-2026.html'},
+        {label:'配当株',url:'/blog/kabusui-osusume-2026.html'},
+        {label:'株推奨銘柄',url:'/blog/kabushiki-suishou-meigara-muryou.html'},
+        {label:'暴落銘柄',url:'/blog/2026-bouraku-meigara-buy-opportunity.html'}
+      ];
+      const filtered = items.filter(i => i.label.toLowerCase().includes(q.toLowerCase())).slice(0, 6);
+      box.innerHTML = filtered.map(i => `<a href="${i.url}" class="block px-4 py-3 hover:bg-gray-100 border-b last:border-0 text-sm">${i.label}</a>`).join('');
+      box.classList.toggle('hidden', filtered.length === 0);
+    });
+
+    document.addEventListener('click', function(e) {
+      if (wrapper && !wrapper.contains(e.target)) box.classList.add('hidden');
+    });
+  })();
+  </script>
 </body>
 </html>

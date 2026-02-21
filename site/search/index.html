@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>検索結果｜株情報無料配信</title>
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://kouhaitou.jp/search/">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body{font-family:"メイリオ","Hiragino Sans","Yu Gothic",system-ui,sans-serif;}
+    input, select, textarea{font-size:16px}
+  </style>
+</head>
+<body class="bg-gray-50">
+
+  <div class="bg-[#1a3c6e] text-white text-xs py-1.5">
+    <div class="max-w-7xl mx-auto px-6">投資はリスクを伴い、元本保証はありません。</div>
+  </div>
+  <header class="bg-white border-b shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="text-2xl font-bold text-[#1a3c6e]">株情報無料配信</a>
+      <nav class="flex items-center gap-6 text-sm">
+        <a href="/" class="text-[#1a3c6e] font-bold">トップ</a>
+        <a href="/blog/" class="hover:text-[#1a3c6e]">ブログ</a>
+        <a href="/company.html" class="hover:text-[#1a3c6e]">会社概要</a>
+        <a href="https://line.me/R/ti/p/@981czbkb" class="bg-[#00B900] hover:bg-[#009900] text-white px-6 py-2 rounded text-sm font-medium">LINE登録</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-10">
+    <form action="/search/" method="get" class="mb-8">
+      <div class="flex gap-2 max-w-md">
+        <input type="search" name="q" id="search-input" value=""
+               class="flex-1 bg-gray-100 border border-gray-300 rounded-full py-3 px-5 text-base focus:outline-none focus:border-[#1a3c6e] placeholder:text-gray-500"
+               placeholder="銘柄コード・企業名で検索" autocomplete="off">
+        <button type="submit" class="bg-[#1a3c6e] hover:bg-[#153059] text-white px-6 py-3 rounded-full font-medium">検索</button>
+      </div>
+    </form>
+    <div class="mb-10">
+      <h1 class="text-3xl font-bold text-[#1a3c6e]">検索結果</h1>
+      <p id="search-query" class="text-gray-600 mt-2 text-lg"></p>
+    </div>
+
+    <div id="results" class="space-y-6"></div>
+    <div id="empty-state" class="hidden text-center py-20">
+      <div class="text-6xl mb-6">🔍</div>
+      <p class="text-2xl font-medium text-gray-700">該当する記事が見つかりませんでした</p>
+      <p class="text-gray-500 mt-3">キーワードを変えて再度お試しください</p>
+      <a href="/blog/" class="mt-8 inline-block bg-[#1a3c6e] text-white px-10 py-4 rounded-2xl hover:bg-[#153059] transition">ブログ一覧へ戻る</a>
+    </div>
+  </main>
+
+  <footer class="bg-[#1a3c6e] text-white mt-16 py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-wrap justify-between items-center gap-6">
+        <div>
+          <p class="font-bold mb-2">株情報無料配信</p>
+          <p class="text-sm opacity-80">元証券アナリストが厳選する実践的な株式投資情報</p>
+        </div>
+        <a href="https://line.me/R/ti/p/@981czbkb" class="bg-[#00B900] hover:bg-[#009900] text-white px-8 py-3 rounded font-medium">LINEで無料登録する</a>
+      </div>
+      <p class="mt-8 text-xs opacity-70">© 2026 All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const params = new URLSearchParams(location.search);
+      const q = params.get('q') || '';
+      const searchInput = document.getElementById('search-input');
+      if (searchInput) searchInput.value = q;
+      const queryEl = document.getElementById('search-query');
+      const resultsEl = document.getElementById('results');
+      const emptyEl = document.getElementById('empty-state');
+
+      queryEl.textContent = q ? '"' + q + '" の検索結果' : 'キーワードを入力して検索してください';
+
+      const articles = [
+        {title:'東京で高配当株をお探しの方へ｜2026年本当に強い銘柄TOP10',url:'/blog/tokyo-kouhaitou-2026.html',date:'2026.2.21',thumb:'/images/tokyo-kouhaitou-2026-thumb.svg'},
+        {title:'大阪で本当に強い高配当株2026｜利回り4.5%以上プロ厳選',url:'/blog/osaka-kouhaitou-2026.html',date:'2026.2.21',thumb:'/images/osaka-kouhaitou-2026-thumb.svg'},
+        {title:'愛知で強い高配当株2026｜製造業投資家向けおすすめ銘柄',url:'/blog/aichi-kouhaitou-2026.html',date:'2026.2.21',thumb:'/images/aichi-kouhaitou-2026-thumb.svg'},
+        {title:'2026 高配当株 おすすめランキングTOP10｜利回り4%以上プロ厳選',url:'/blog/2026-kouhaitou-kabuka-ranking.html',date:'2026.2.21',thumb:'/images/2026-kouhaitou-kabuka-ranking-thumb.svg'},
+        {title:'2026 NISAおすすめ銘柄TOP10｜成長投資枠プロ厳選・無料LINE',url:'/blog/nisa-osusume-meigara-2026.html',date:'2026.2.20',thumb:'/images/nisa-osusume-meigara-2026-thumb.svg'},
+        {title:'日経平均高配当株50 2026｜おすすめ銘柄＆利回り公開',url:'/blog/nikkei-kouhaitou50-2026.html',date:'2026.2.17',thumb:'/images/nikkei-kouhaitou50-2026-thumb.svg'},
+        {title:'2026 配当株 おすすめランキング｜初心者NISAで安定収入プロ厳選',url:'/blog/kabusui-osusume-2026.html',date:'2026.2.19',thumb:'/images/kabusui-osusume-2026-thumb.svg'},
+        {title:'元アナリストが無料で株推奨銘柄配信｜2026最新レポート',url:'/blog/kabushiki-suishou-meigara-muryou.html',date:'2026.2.18',thumb:'/images/kabushiki-suishou-meigara-muryou-thumb.svg'},
+        {title:'暴落した銘柄は買い増しチャンス？ソフトバンク・任天堂・INPEXを分析',url:'/blog/2026-bouraku-meigara-buy-opportunity.html',date:'2026.2.21',thumb:'/images/2026-bouraku-meigara-thumb.svg'},
+        {title:'2025年日本株式市場を振り返る～20年の経験から見えた教訓と2026年の展望～',url:'/blog/2025-nikkei-review.html',date:'2026.2.21',thumb:'/images/2025-nikkei-review-thumb.svg'}
+      ];
+
+      const kw = function(a){
+        return a.title + ' ' + ['高配当株','NISA','銘柄','日経','東京','大阪','愛知','配当','株','無料','暴落','ランキング','2026','2025'].join(' ');
+      };
+
+      const filtered = q.length >= 1
+        ? articles.filter(a => kw(a).toLowerCase().includes(q.toLowerCase()) || a.title.toLowerCase().includes(q.toLowerCase()))
+        : [];
+
+      if (filtered.length === 0) {
+        resultsEl.classList.add('hidden');
+        emptyEl.classList.remove('hidden');
+      } else {
+        resultsEl.innerHTML = filtered.map(a => `
+          <article class="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition flex flex-col sm:flex-row gap-6">
+            <a href="${a.url}" class="flex-shrink-0 w-full sm:w-48 h-32 sm:h-24 overflow-hidden rounded-xl">
+              <img src="${a.thumb}" class="w-full h-full object-cover" alt="">
+            </a>
+            <div class="flex-1">
+              <time class="text-xs text-gray-500">${a.date}</time>
+              <h2 class="text-xl font-bold mt-2 leading-tight">
+                <a href="${a.url}" class="hover:text-[#00B900] text-[#1a3c6e]">${a.title}</a>
+              </h2>
+              <a href="${a.url}" class="text-[#00B900] mt-4 inline-block font-medium text-sm">詳しく読む →</a>
+            </div>
+          </article>
+        `).join('');
+        resultsEl.classList.remove('hidden');
+        emptyEl.classList.add('hidden');
+      }
+    })();
+  </script>
+</body>
+</html>

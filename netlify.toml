@@ -7,3 +7,8 @@
 
 [build.environment]
   NODE_VERSION = "18"
+
+# 落地页地域化标题 Edge Function（东京/大阪/爱知/全国）
+[[edge_functions]]
+  function = "geo-title"
+  path = "/*"
