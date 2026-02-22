@@ -1,0 +1,53 @@
+{
+  "meta": {
+    "name": "站内广告图片设计规范",
+    "purpose": "高转化 + SEO + 金融合规"
+  },
+  "principle": "内容延伸模块，不做广告感",
+  "image_types_priority": [
+    {
+      "type": "数据报告型",
+      "ctr": "highest",
+      "example": "【2026年版】福岡の株式投資データ完全まとめ 無料ダウンロード",
+      "elements": ["年份", "地区", "具体价值"]
+    },
+    {
+      "type": "工具型",
+      "example": "IPO抽選確率シミュレーター 無料チェック"
+    },
+    {
+      "type": "情报订阅型",
+      "example": "毎週IPO速報レポート 登録無料"
+    }
+  ],
+  "image_specs": {
+    "article_horizontal": "1200x628",
+    "sidebar": "300x300",
+    "mobile": "1200x1200",
+    "max_size_kb": 300
+  },
+  "layout_structure": {
+    "top": "地区名 + 关键词",
+    "middle": "核心利益点",
+    "bottom": "按钮（弱销售）"
+  },
+  "button_copy_ok": ["詳細を見る", "無料で確認", "レポートを見る"],
+  "button_copy_avoid": ["今すぐ儲かる", "確実に利益", "爆上げ銘柄"],
+  "filename_pattern": "fukuoka-stock-guide-2026.jpg",
+  "alt_pattern": "福岡 株式投資 初心者ガイド",
+  "placement": {
+    "1_first": "首屏下方（用户阅读20-30%后）",
+    "2_mid": "中段（解决方案后，转化率最高）",
+    "3_end": "结尾（总结延伸）"
+  },
+  "ctr_tips": {
+    "numbers": ["3つの戦略", "2026年最新版", "5分で理解"],
+    "region": ["東京限定", "大阪投資家向け", "福岡版"],
+    "limited": ["限定公開", "今月版", "最新版"]
+  },
+  "seo_rules": ["图片<300KB", "内容>广告", "自然嵌入", "首屏不占满"],
+  "compliance": {
+    "avoid": ["推荐具体买卖点", "保证收益", "明确目标价"],
+    "authority": "金融庁"
+  }
+}
