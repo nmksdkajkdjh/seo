@@ -175,6 +175,22 @@
       毎週月曜朝8時 LINE直達　／　チャート解説付きで即実践可能　／　登録無料・ブロック1秒
     </a>
 
+    <!-- 地域別 高配当株おすすめ（首屏下・強アンカー） -->
+    <div class="bg-white rounded-lg border border-[#E0E0E0] shadow-sm p-6 mb-10">
+      <h2 class="text-xl font-bold text-[#003366] mb-4 pb-2 border-b-2 border-[#003366]">お住まいの地域別 高配当株おすすめ2026</h2>
+      <p class="text-gray-600 text-sm mb-4">お住まいの地域向けにプロが厳選した高配当株TOP10を解説。利回り4%以上・NISA対応。</p>
+      <div class="flex flex-wrap gap-3 text-sm">
+        <a href="/blog/tokyo-kouhaitou-2026.html" class="px-4 py-2 bg-[#F5F5F5] hover:bg-[#003366] hover:text-white rounded border border-[#E0E0E0] hover:border-[#003366] transition">東京 高配当株おすすめ</a>
+        <a href="/blog/osaka-kouhaitou-2026.html" class="px-4 py-2 bg-[#F5F5F5] hover:bg-[#003366] hover:text-white rounded border border-[#E0E0E0] hover:border-[#003366] transition">大阪 高配当株おすすめ</a>
+        <a href="/blog/aichi-kouhaitou-2026.html" class="px-4 py-2 bg-[#F5F5F5] hover:bg-[#003366] hover:text-white rounded border border-[#E0E0E0] hover:border-[#003366] transition">愛知 高配当株おすすめ</a>
+        <a href="/blog/kanagawa-kouhaitou-2026.html" class="px-4 py-2 bg-[#F5F5F5] hover:bg-[#003366] hover:text-white rounded border border-[#E0E0E0] hover:border-[#003366] transition">神奈川 高配当株おすすめ</a>
+        <a href="/blog/fukuoka-kouhaitou-2026.html" class="px-4 py-2 bg-[#F5F5F5] hover:bg-[#003366] hover:text-white rounded border border-[#E0E0E0] hover:border-[#003366] transition">福岡・九州 高配当株</a>
+        <a href="/blog/hokkaido-kouhaitou-2026.html" class="px-4 py-2 bg-[#F5F5F5] hover:bg-[#003366] hover:text-white rounded border border-[#E0E0E0] hover:border-[#003366] transition">北海道 高配当株</a>
+        <a href="/blog/shizuoka-kouhaitou-2026.html" class="px-4 py-2 bg-[#F5F5F5] hover:bg-[#003366] hover:text-white rounded border border-[#E0E0E0] hover:border-[#003366] transition">静岡 高配当株</a>
+        <a href="/blog/hiroshima-kouhaitou-2026.html" class="px-4 py-2 bg-[#F5F5F5] hover:bg-[#003366] hover:text-white rounded border border-[#E0E0E0] hover:border-[#003366] transition">広島 高配当株</a>
+      </div>
+    </div>
+
     <!-- 热门文章卡片网格（Kabutan风 + 浏览量 + 视觉丰富） -->
     <div class="bg-white rounded-lg border border-[#E0E0E0] shadow-sm p-6 mb-8">
     <h2 class="text-2xl font-bold text-[#003366] mb-6 pb-3 border-b-2 border-[#003366]">人気記事</h2>
@@ -285,6 +301,9 @@
           <a href="/blog/aichi-kouhaitou-2026.html" class="text-[#003366] hover:underline">愛知</a>
           <a href="/blog/fukuoka-kouhaitou-2026.html" class="text-[#003366] hover:underline">福岡</a>
           <a href="/blog/kanagawa-kouhaitou-2026.html" class="text-[#003366] hover:underline">神奈川</a>
+          <a href="/blog/hokkaido-kouhaitou-2026.html" class="text-[#003366] hover:underline">北海道</a>
+          <a href="/blog/shizuoka-kouhaitou-2026.html" class="text-[#003366] hover:underline">静岡</a>
+          <a href="/blog/hiroshima-kouhaitou-2026.html" class="text-[#003366] hover:underline">広島</a>
         </div>
       </div>
       
@@ -404,6 +423,18 @@
   setInterval(fetchMarketData, 30000);
   fetchMarketData();
 
+  // ==================== UTM パススルー（広告流入時LINEリンクにUTM付与） ====================
+  (function(){
+    const p = new URLSearchParams(location.search);
+    const utm = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].filter(k=>p.get(k)).map(k=>k+'='+encodeURIComponent(p.get(k))).join('&');
+    if (utm) {
+      const lineBase = 'https://line.me/R/ti/p/@981czbkb';
+      document.querySelectorAll('a[href*="line.me"][href*="981czbkb"]').forEach(function(a){
+        if (!a.getAttribute('href').includes('utm_')) a.setAttribute('href', lineBase + '?' + utm);
+      });
+    }
+  })();
+
   // ==================== GTM LINE クリック計測 ====================
   document.querySelectorAll('a[href*="line.me"]').forEach(function(a){
     a.addEventListener('click', function(){
@@ -442,6 +473,10 @@
         {label:'東京 高配当株',url:'/blog/tokyo-kouhaitou-2026.html'},
         {label:'大阪 高配当株',url:'/blog/osaka-kouhaitou-2026.html'},
         {label:'愛知 高配当株',url:'/blog/aichi-kouhaitou-2026.html'},
+        {label:'福岡 高配当株',url:'/blog/fukuoka-kouhaitou-2026.html'},
+        {label:'北海道 高配当株',url:'/blog/hokkaido-kouhaitou-2026.html'},
+        {label:'静岡 高配当株',url:'/blog/shizuoka-kouhaitou-2026.html'},
+        {label:'広島 高配当株',url:'/blog/hiroshima-kouhaitou-2026.html'},
         {label:'配当株',url:'/blog/kabusui-osusume-2026.html'},
         {label:'株推奨銘柄',url:'/blog/kabushiki-suishou-meigara-muryou.html'},
         {label:'暴落銘柄',url:'/blog/2026-bouraku-meigara-buy-opportunity.html'}

@@ -48,7 +48,7 @@ export default async (request, context) => {
       metaDesc =
         "東京・首都圏在住の方へ。新NISA成長投資枠で狙うべき高配当株を無料でお届けします。";
       ctaText = "東京の皆様　今すぐLINE登録";
-      heroImage = "/images/hero-tokyo.jpg";
+      heroImage = "/images/tokyo-kouhaitou-2026-thumb.jpg";
     } else if (
       city.includes("osaka") ||
       city.includes("kyoto") ||
@@ -63,7 +63,7 @@ export default async (request, context) => {
       metaDesc =
         "大阪・関西在住の方へ。利回り4.5%以上で長期保有に強い銘柄を厳選無料配信。";
       ctaText = "関西の皆様　今すぐ無料登録";
-      heroImage = "/images/hero-osaka.jpg";
+      heroImage = "/images/osaka-kouhaitou-2026-thumb.jpg";
     } else if (
       city.includes("nagoya") ||
       city.includes("aichi") ||
@@ -76,7 +76,7 @@ export default async (request, context) => {
       metaDesc =
         "愛知県民・製造業投資家の方へ。地元優良高配当株を中心に2026年おすすめを無料でお届け。";
       ctaText = "愛知の皆様　今すぐLINE登録";
-      heroImage = "/images/hero-aichi.jpg";
+      heroImage = "/images/aichi-kouhaitou-2026-thumb.jpg";
     } else if (
       city.includes("sapporo") ||
       city.includes("hokkaido") ||
@@ -88,7 +88,7 @@ export default async (request, context) => {
       ogTitle = pageTitle;
       metaDesc = "北海道在住の方へ。寒冷地でも強い安定高配当株をプロが厳選無料配信。";
       ctaText = "北海道の皆様　今すぐLINE登録";
-      heroImage = "/images/hero-hokkaido.jpg";
+      heroImage = "/images/hokkaido-kouhaitou-2026-thumb.svg";
     } else if (
       city.includes("fukuoka") ||
       region.includes("fukuoka") ||
@@ -99,7 +99,7 @@ export default async (request, context) => {
       ogTitle = pageTitle;
       metaDesc = "福岡・九州在住の方へ。2026年本当に強い高配当株を無料でお届けします。";
       ctaText = "九州の皆様　今すぐ無料登録";
-      heroImage = "/images/hero-fukuoka.jpg";
+      heroImage = "/images/fukuoka-kouhaitou-2026-thumb.svg";
     } else if (
       city.includes("shizuoka") ||
       region.includes("shizuoka") ||
@@ -110,7 +110,7 @@ export default async (request, context) => {
       ogTitle = pageTitle;
       metaDesc = "静岡在住の方へ。東海地方で狙うべき高配当株をプロ厳選無料配信。";
       ctaText = "静岡の皆様　今すぐLINE登録";
-      heroImage = "/images/hero-shizuoka.jpg";
+      heroImage = "/images/shizuoka-kouhaitou-2026-thumb.svg";
     } else if (
       city.includes("sendai") ||
       city.includes("miyagi") ||
@@ -122,7 +122,7 @@ export default async (request, context) => {
       ogTitle = pageTitle;
       metaDesc = "仙台・東北在住の方へ。2026年安定配当の銘柄を無料でお届けします。";
       ctaText = "東北の皆様　今すぐLINE登録";
-      heroImage = "/images/hero-sendai.jpg";
+      heroImage = "/images/tokyo-kouhaitou-2026-thumb.jpg";
     } else if (
       city.includes("hiroshima") ||
       region.includes("hiroshima") ||
@@ -133,7 +133,7 @@ export default async (request, context) => {
       ogTitle = pageTitle;
       metaDesc = "広島在住の方へ。2026年本当に強い高配当株をプロが厳選無料配信。";
       ctaText = "広島の皆様　今すぐLINE登録";
-      heroImage = "/images/hero-hiroshima.jpg";
+      heroImage = "/images/hiroshima-kouhaitou-2026-thumb.svg";
     }
   }
 

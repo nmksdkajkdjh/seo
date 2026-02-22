@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="288" height="192" viewBox="0 0 288 192">
+  <defs>
+    <linearGradient id="bgHokkaido" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a5f"/>
+      <stop offset="100%" style="stop-color:#0f2847"/>
+    </linearGradient>
+  </defs>
+  <rect width="288" height="192" fill="url(#bgHokkaido)"/>
+  <rect x="100" y="80" width="88" height="60" fill="rgba(255,255,255,0.12)" rx="2"/>
+  <polygon points="144,50 100,90 188,90" fill="rgba(255,255,255,0.1)"/>
+  <circle cx="230" cy="55" r="22" fill="rgba(0,185,0,0.2)" stroke="#00B900" stroke-width="2"/>
+  <text x="230" y="60" fill="#00B900" font-family="Arial,sans-serif" font-size="12" font-weight="bold" text-anchor="middle">4%</text>
+  <text x="144" y="165" fill="white" font-family="Arial,sans-serif" font-size="13" font-weight="bold" text-anchor="middle">wS 2026</text>
+  <text x="144" y="180" fill="rgba(255,255,255,0.75)" font-family="Arial,sans-serif" font-size="10" text-anchor="middle">TOP10</text>
+</svg>
