@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "name": "GTM/GA4 配置说明",
+    "purpose": "LINE转化追踪・按page_type细分"
+  },
+  "gtm_triggers": [
+    {
+      "name": "CE - line_register_click",
+      "type": "Custom Event",
+      "event_name": "line_register_click"
+    },
+    {
+      "name": "CE - cta_visible",
+      "type": "Custom Event",
+      "event_name": "cta_visible"
+    },
+    {
+      "name": "CE - scroll_75",
+      "type": "Custom Event",
+      "event_name": "scroll_75"
+    }
+  ],
+  "gtm_variables": [
+    {
+      "name": "DLV - button_location",
+      "type": "Data Layer Variable",
+      "path": "button_location"
+    },
+    {
+      "name": "DLV - page_url",
+      "type": "Data Layer Variable",
+      "path": "page_url"
+    },
+    {
+      "name": "DLV - page_type",
+      "type": "Data Layer Variable",
+      "path": "page_type"
+    }
+  ],
+  "gtm_tags": [
+    {
+      "name": "GA4 - line_register_click",
+      "type": "GA4 Event",
+      "config": "GA4配置标签ID",
+      "event_name": "line_register_click",
+      "trigger": "CE - line_register_click",
+      "parameters": {
+        "button_location": "{{DLV - button_location}}",
+        "page_url": "{{DLV - page_url}}",
+        "page_type": "{{DLV - page_type}}"
+      }
+    },
+    {
+      "name": "GA4 - cta_visible",
+      "type": "GA4 Event",
+      "event_name": "cta_visible",
+      "trigger": "CE - cta_visible",
+      "parameters": {
+        "button_location": "{{DLV - button_location}}",
+        "page_url": "{{DLV - page_url}}",
+        "page_type": "{{DLV - page_type}}"
+      }
+    },
+    {
+      "name": "GA4 - scroll_75",
+      "type": "GA4 Event",
+      "event_name": "scroll_75",
+      "trigger": "CE - scroll_75",
+      "parameters": {
+        "page_url": "{{DLV - page_url}}",
+        "page_type": "{{DLV - page_type}}"
+      }
+    }
+  ],
+  "ga4_admin": {
+    "conversion_events": [
+      {
+        "event": "line_register_click",
+        "mark_as_conversion": true
+      }
+    ],
+    "custom_definitions": [
+      {
+        "dimension": "page_type",
+        "scope": "event",
+        "description": "home=首页 region=地域页 topic=专题页"
+      },
+      {
+        "dimension": "button_location",
+        "scope": "event",
+        "description": "CTA位置"
+      }
+    ],
+    "engagement_criteria": {
+      "engaged_session": "session_duration > 60s 或 2+页面 或 1+转化",
+      "recommendation": "在探索中过滤 engaged_session=yes 分析质量流量"
+    }
+  },
+  "explore_reports": [
+    {
+      "name": "LINE转化率 by page_type",
+      "metrics": ["line_register_click", "sessions", "cta_visible", "scroll_75"],
+      "dimensions": ["page_type", "page_url"],
+      "formula": "line_register_click / sessions (转化率)"
+    },
+    {
+      "name": "CTA点击率 by button_location",
+      "formula": "line_register_click / cta_visible"
+    }
+  ]
+}

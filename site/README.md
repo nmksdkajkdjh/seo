@@ -8,6 +8,9 @@ site/
 ├── company.html     ← 会社概要
 ├── privacy.html     ← プライバシーポリシー
 ├── sitemap.xml
+├── data/            ← 运营配置（SERP模型・路线图・转化漏斗）
+├── js/
+│   └── conversion-tracking.js  ← LINE登録クリック計測
 ├── blog/
 │   ├── index.html
 │   ├── 2026-kouhaitou-kabuka-ranking.html
