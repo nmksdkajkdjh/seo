@@ -44,9 +44,25 @@
     .text-primary { color: #003366; }
     .bg-primary { background-color: #003366; }
     .border-module { border-color: #E0E0E0; }
+    .ad-sidebar { position: fixed; left: 0; top: 50%; transform: translateY(-50%); z-index: 40; }
   </style>
 </head>
 <body class="bg-[#F5F5F5] text-gray-800">
+
+  <!-- 固定左侧：内容延伸模块（非广告感，桌面端显示） -->
+  <aside class="ad-sidebar hidden lg:block ml-2 mt-0" aria-label="おすすめ資料">
+    <div class="space-y-3 bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg border border-[#E0E0E0] w-[140px]">
+      <p class="text-xs text-gray-500 font-medium">【2026年版】</p>
+      <a href="/lp/ipo-fukuoka/" class="block group">
+        <img src="/images/ad-1.png" alt="地域別 株式投資データ完全まとめ 無料ダウンロード｜高配当株" class="w-full rounded border border-[#E0E0E0] group-hover:opacity-90 transition" loading="lazy">
+        <span class="block text-xs text-center mt-1 text-[#003366] group-hover:underline">レポートを見る</span>
+      </a>
+      <a href="/lp/dividend-beginner/" class="block group">
+        <img src="/images/ad-2.png" alt="高配当株 初心者ガイド 無料｜NISA対応" class="w-full rounded border border-[#E0E0E0] group-hover:opacity-90 transition" loading="lazy">
+        <span class="block text-xs text-center mt-1 text-[#003366] group-hover:underline">無料で確認</span>
+      </a>
+    </div>
+  </aside>
 
   <!-- 株探风：顶部合规栏（主色深蓝） -->
   <div class="bg-[#003366] text-white text-xs py-1.5">
@@ -317,10 +333,10 @@
       <aside class="lg:col-span-4 space-y-6">
         <div class="bg-white border border-[#E0E0E0] rounded-lg shadow-sm p-6">
           <p class="text-xs text-gray-500 mb-2">【2026年版】</p>
-          <h4 class="font-bold text-[#003366] mb-2">地域別 株式投資データ</h4>
-          <p class="text-sm text-gray-600 mb-4">無料で確認</p>
+          <h4 class="font-bold text-[#003366] mb-2">地域別 株式投資データ<br>完全まとめ</h4>
+          <p class="text-sm text-gray-600 mb-4">無料ダウンロード</p>
           <a href="https://line.me/R/ti/p/@981czbkb" class="block w-full bg-[#F5F5F5] hover:bg-[#003366] hover:text-white text-center py-2.5 rounded border border-[#E0E0E0] hover:border-[#003366] text-sm font-medium transition">
-            詳細を見る
+            レポートを見る
           </a>
         </div>
         <div class="bg-white border border-[#E0E0E0] rounded-lg shadow-sm p-6">
@@ -356,34 +372,38 @@
       </aside>
     </div>
 
-    <div class="mt-10 p-6 border border-[#E0E0E0] rounded-lg bg-white shadow-sm">
-      <p class="text-xs text-gray-500 mb-2">関連資料</p>
-      <div class="flex flex-col sm:flex-row gap-4 items-center sm:items-start">
-        <div class="flex-1">
-          <h4 class="font-bold text-[#003366]">高配当株 3つの戦略｜2026年最新版</h4>
-          <p class="text-sm text-gray-600 mt-1">無料レポートをLINEでお届け</p>
-        </div>
-        <a href="https://line.me/R/ti/p/@981czbkb" class="px-5 py-2.5 bg-[#F5F5F5] hover:bg-[#003366] hover:text-white rounded border border-[#E0E0E0] hover:border-[#003366] text-sm font-medium transition whitespace-nowrap">
-          無料で確認
-        </a>
-      </div>
-    </div>
-    <div class="mt-6 p-6 border border-[#E0E0E0] rounded-lg text-sm text-gray-600 bg-white shadow-sm">
+    <div class="mt-10 p-6 border border-[#E0E0E0] rounded-lg text-sm text-gray-600 bg-white shadow-sm">
       <p><a href="/company.html" class="text-[#003366] hover:underline">運営会社・FSA登録番号はこちら</a></p>
       <p class="mt-4 text-xs">投資はリスクを伴い、元本保証はありません。過去の実績は将来の結果を保証するものではありません。</p>
+    </div>
+    <div class="mt-6 p-6 border border-[#E0E0E0] rounded-lg bg-white shadow-sm">
+      <p class="text-xs text-gray-500 mb-4">関連資料</p>
+      <div class="space-y-4">
+        <div class="flex flex-col sm:flex-row gap-4 items-center sm:items-start justify-between">
+          <div class="flex-1">
+            <h4 class="font-bold text-[#003366]">高配当株 3つの戦略｜2026年最新版</h4>
+            <p class="text-sm text-gray-600 mt-1">初心者向け無料レポート</p>
+          </div>
+          <a href="/lp/dividend-beginner/" class="px-5 py-2.5 bg-[#F5F5F5] hover:bg-[#003366] hover:text-white rounded border border-[#E0E0E0] hover:border-[#003366] text-sm font-medium transition whitespace-nowrap">
+            レポートを見る
+          </a>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4 items-center sm:items-start justify-between border-t border-[#E0E0E0] pt-4">
+          <div class="flex-1">
+            <h4 class="font-bold text-[#003366]">福岡IPO最新速報｜申込手順ガイド</h4>
+            <p class="text-sm text-gray-600 mt-1">九州投資家向け2026年版</p>
+          </div>
+          <a href="/lp/ipo-fukuoka/" class="px-5 py-2.5 bg-[#F5F5F5] hover:bg-[#003366] hover:text-white rounded border border-[#E0E0E0] hover:border-[#003366] text-sm font-medium transition whitespace-nowrap">
+            無料で確認
+          </a>
+        </div>
+      </div>
     </div>
   </main>
 
   <footer class="bg-[#003366] text-white pt-16 pb-8">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-12">
-        <div class="md:col-span-1 order-first md:order-first">
-          <p class="text-xs opacity-70 mb-2 font-medium">おすすめ資料</p>
-          <div class="space-y-4">
-            <a href="https://line.me/R/ti/p/@981czbkb" class="block" rel="noopener"><img src="/images/ad-1.png" alt="2026年版 地域別 株式投資データ 無料レポート｜高配当株" class="w-full rounded border border-white/20 max-w-[200px] hover:opacity-90 transition" loading="lazy"></a>
-            <a href="https://line.me/R/ti/p/@981czbkb" class="block" rel="noopener"><img src="/images/ad-2.png" alt="高配当株 初心者ガイド 無料ダウンロード｜NISA対応" class="w-full rounded border border-white/20 max-w-[200px] hover:opacity-90 transition" loading="lazy"></a>
-          </div>
-        </div>
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
         <div>
           <p class="font-bold mb-4">株情報無料配信</p>
           <p class="text-sm opacity-80">元証券アナリストが厳選する<br>実践的な株式投資情報</p>
