@@ -49,21 +49,17 @@
 </head>
 <body class="bg-[#F5F5F5] text-gray-800">
 
-  <!-- 固定左侧：内容延伸模块（屏幕中间垂直居中，不挡主内容） -->
-  <aside class="ad-sidebar-wrap hidden lg:block ml-2 flex flex-col gap-3 w-[280px]" aria-label="おすすめ資料">
-    <a href="/lp/ipo-fukuoka/" class="block rounded-lg overflow-hidden border border-[#E0E0E0] bg-white shadow-lg hover:shadow-xl transition-shadow flex-shrink-0">
-      <img src="/images/ad-1.png" alt="地域別 株式投資データ完全まとめ 無料ダウンロード｜高配当株" class="w-full h-[260px] object-cover" loading="lazy">
-      <span class="block text-xs text-center py-2 text-[#003366] font-medium bg-white">レポートを見る</span>
-    </a>
-    <div class="space-y-3 bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg border border-[#E0E0E0] flex-shrink-0">
+  <!-- 固定左侧：内容延伸模块（严格限定在红色区域内，不溢出） -->
+  <aside class="ad-sidebar-wrap hidden lg:block ml-2 w-[280px] overflow-hidden" aria-label="おすすめ資料">
+    <div class="flex flex-col gap-3 bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg border border-[#E0E0E0] overflow-hidden">
       <p class="text-xs text-gray-500 font-medium">【2026年版】</p>
-      <a href="/lp/ipo-fukuoka/" class="block group">
-        <img src="/images/ad-1.png" alt="地域別 株式投資データ完全まとめ 無料ダウンロード｜高配当株" class="w-full rounded border border-[#E0E0E0] group-hover:opacity-90 transition" loading="lazy">
-        <span class="block text-xs text-center mt-1 text-[#003366] group-hover:underline">レポートを見る</span>
+      <a href="/lp/ipo-fukuoka/" class="block group overflow-hidden rounded border border-[#E0E0E0]">
+        <img src="/images/ad-1.png" alt="地域別 株式投資データ完全まとめ 無料ダウンロード｜高配当株" class="w-full h-auto max-h-[140px] object-contain" loading="lazy">
+        <span class="block text-xs text-center mt-1 py-1 text-[#003366] group-hover:underline">レポートを見る</span>
       </a>
-      <a href="https://line.me/R/ti/p/@981czbkb" class="block group" rel="noopener noreferrer">
-        <img src="/images/ad-2.png" alt="高配当株 初心者ガイド 無料｜NISA対応" class="w-full rounded border border-[#E0E0E0] group-hover:opacity-90 transition" loading="lazy">
-        <span class="block text-xs text-center mt-1 text-[#003366] group-hover:underline">無料で確認</span>
+      <a href="https://line.me/R/ti/p/@981czbkb" class="block group overflow-hidden rounded border border-[#E0E0E0]" rel="noopener noreferrer">
+        <img src="/images/ad-2.png" alt="高配当株 初心者ガイド 無料｜NISA対応" class="w-full h-auto max-h-[140px] object-contain" loading="lazy">
+        <span class="block text-xs text-center mt-1 py-1 text-[#003366] group-hover:underline">無料で確認</span>
       </a>
     </div>
   </aside>
