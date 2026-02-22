@@ -15,14 +15,14 @@ const TICKERS = [
 ];
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 
-// Finnhub symbol 映射（Yahoo 失败时使用）
-const FINNHUB_SYMBOLS = {
-  nikkei: '^N225',
-  topix: '^TPX',
-  usdjpy: 'OANDA:USD_JPY',
-  nydow: '^DJI',
-  shanghai: '000001.SS',
-  reit: '1348.T'  // 東証REIT上場投信
+// Finnhub symbol 映射（Yahoo 失败时使用，可多试几个）
+const FINNHUB_FALLBACKS = {
+  nikkei: ['^N225'],
+  topix: ['^TPX', 'TPX', '.TPX', 'TPX:IND'],
+  usdjpy: ['OANDA:USD_JPY'],
+  nydow: ['^DJI'],
+  shanghai: ['000001.SS'],
+  reit: ['^JPXREIT', '1348.T']
 };
 
 function getPrice(q) {
@@ -43,8 +43,8 @@ async function fetchV7() {
   return bySym;
 }
 
-async function fetchV8Chart(symbol) {
-  const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?interval=1d&range=5d`;
+async function fetchV8Chart(symbol, range = '5d') {
+  const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?interval=1d&range=${range}`;
   const res = await fetch(url, {
     headers: { 'User-Agent': UA, 'Accept': 'application/json' }
   });
@@ -124,10 +124,11 @@ async function resolveTicker(ticker, bySym) {
       };
     }
   }
-  // 2. Yahoo v8 chart
+  // 2. Yahoo v8 chart（TOPIX 等有时 5d 无数据，试 1mo）
   for (const sym of ticker.symbols) {
     try {
-      const q = await fetchV8Chart(sym);
+      let q = await fetchV8Chart(sym);
+      if (!q && ticker.id === 'topix') q = await fetchV8Chart(sym, '1mo');
       if (q && getPrice(q) != null) {
         return { symbol: ticker.symbols[0], ...q };
       }
@@ -138,11 +139,13 @@ async function resolveTicker(ticker, bySym) {
     const q = await fetchExchangeRateUSDJPY();
     if (q) return q;
   }
-  // 4. Finnhub 备用
-  const fhSym = FINNHUB_SYMBOLS[ticker.id];
-  if (fhSym) {
-    const q = await fetchFinnhubQuote(fhSym);
-    if (q) return { symbol: ticker.symbols[0], ...q };
+  // 4. Finnhub 备用（依次尝试多个 symbol）
+  const fhSyms = FINNHUB_FALLBACKS[ticker.id];
+  if (fhSyms) {
+    for (const fhSym of fhSyms) {
+      const q = await fetchFinnhubQuote(fhSym);
+      if (q) return { symbol: ticker.symbols[0], ...q };
+    }
   }
   return null;
 }
