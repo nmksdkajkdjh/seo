@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="288" height="192" viewBox="0 0 288 192">
+  <defs>
+    <linearGradient id="bgFukuoka" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a4d3e"/>
+      <stop offset="100%" style="stop-color:#1a3c6e"/>
+    </linearGradient>
+  </defs>
+  <rect width="288" height="192" fill="url(#bgFukuoka)"/>
+  <!-- Fukuoka Tower style silhouette -->
+  <rect x="132" y="60" width="24" height="110" fill="rgba(255,255,255,0.15)" rx="2"/>
+  <polygon points="120,170 168,170 144,190" fill="rgba(255,255,255,0.12)"/>
+  <!-- Kyushu horizon bars -->
+  <rect x="30" y="105" width="40" height="70" fill="rgba(255,255,255,0.08)" rx="1"/>
+  <rect x="75" y="95" width="35" height="80" fill="rgba(255,255,255,0.1)" rx="1"/>
+  <rect x="178" y="90" width="38" height="85" fill="rgba(255,255,255,0.08)" rx="1"/>
+  <rect x="223" y="100" width="35" height="75" fill="rgba(255,255,255,0.1)" rx="1"/>
+  <circle cx="245" cy="55" r="22" fill="rgba(0,185,0,0.2)" stroke="#00B900" stroke-width="2"/>
+  <text x="245" y="60" fill="#00B900" font-family="Arial,sans-serif" font-size="12" font-weight="bold" text-anchor="middle">4%</text>
+  <text x="144" y="165" fill="white" font-family="Arial,sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Fukuoka 2026</text>
+  <text x="144" y="180" fill="rgba(255,255,255,0.75)" font-family="Arial,sans-serif" font-size="10" text-anchor="middle">]Þ TOP10</text>
+</svg>
