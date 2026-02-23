@@ -82,6 +82,10 @@
     .card-washi { background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3ClinearGradient id='ink2' x1='0%25' y1='100%25' x2='0%25' y2='0%25'%3E%3Cstop offset='0%25' style='stop-color:%232F2F2F;stop-opacity:0.012'/%3E%3Cstop offset='100%25' style='stop-color:%232F2F2F;stop-opacity:0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23ink2)'/%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E"); }
     .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .card-hover:hover { transform: translateY(-2px); box-shadow: 0 3px 12px rgba(0,0,0,0.03); }
+    .hero-slide:nth-child(1) { animation: hero-show 12s ease-in-out infinite; }
+    .hero-slide:nth-child(2) { animation: hero-hide 12s ease-in-out infinite; }
+    @keyframes hero-show { 0%,45% { opacity: 1; } 50%,95% { opacity: 0; } 100% { opacity: 1; } }
+    @keyframes hero-hide { 0%,45% { opacity: 0; } 50%,95% { opacity: 1; } 100% { opacity: 0; } }
     .cta-btn { height: 56px; border-radius: 8px; }
     .faq-toggle { cursor: pointer; }
     .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
@@ -174,9 +178,12 @@
     </nav>
   </header>
 
-  <!-- Hero：間・480px・Ma｜季節条幅を内部頂部に統合（28px・眼動干擾低減） -->
-  <section class="relative min-h-[460px] md:min-h-[480px] flex flex-col bg-cover bg-center bg-no-repeat hero-section hero-washi" 
-           style="background-image: linear-gradient(to right, rgba(0,31,63,0.88), rgba(0,31,63,0.6), transparent), url('/images/hero-main.jpg'), linear-gradient(135deg, #4A3C35 0%, #002a52 40%, #4A3C35 100%);">
+  <!-- Hero：間・480px・Ma｜季節条幅を内部頂部に統合（28px・眼動干擾低減）｜2枚輪播 -->
+  <section class="relative min-h-[460px] md:min-h-[480px] flex flex-col overflow-hidden hero-section hero-washi">
+    <div class="hero-carousel absolute inset-0">
+      <div class="hero-slide absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: linear-gradient(to right, rgba(0,31,63,0.88), rgba(0,31,63,0.6), transparent), url('/images/hero-main-1.jpg'), linear-gradient(135deg, #4A3C35 0%, #002a52 40%, #4A3C35 100%);"></div>
+      <div class="hero-slide absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: linear-gradient(to right, rgba(0,31,63,0.88), rgba(0,31,63,0.6), transparent), url('/images/hero-main-2.jpg'), linear-gradient(135deg, #4A3C35 0%, #002a52 40%, #4A3C35 100%);"></div>
+    </div>
     <!-- 季節条幅：Hero内部28px・竹影に溶け込む -->
     <div class="absolute top-0 left-0 right-0 h-7 flex items-center justify-center z-10" style="background: linear-gradient(to bottom, rgba(47,47,47,0.06), transparent);">
       <p class="text-white/95 text-xs md:text-sm tracking-wider font-medium" style="text-shadow: 0 1px 1px rgba(0,0,0,0.15);">
@@ -519,19 +526,19 @@
           <div class="space-y-4 text-sm">
             <div class="flex justify-between items-center py-2 border-b border-[#E8E4DB]">
               <span class="font-medium">三菱UFJ</span>
-              <span class="text-[#E6392E] font-bold">+2.3%</span>
+              <span id="sidebar-mufg" class="font-bold ticker-up">---</span>
             </div>
             <div class="flex justify-between items-center py-2 border-b border-[#E8E4DB]">
               <span class="font-medium">日本たばこ産業</span>
-              <span class="text-[#E6392E] font-bold">+1.8%</span>
+              <span id="sidebar-jt" class="font-bold ticker-up">---</span>
             </div>
             <div class="flex justify-between items-center py-2 border-b border-[#E8E4DB]">
               <span class="font-medium">東京ガス</span>
-              <span class="text-[#00A86B] font-bold">-0.5%</span>
+              <span id="sidebar-tokyogas" class="font-bold ticker-down">---</span>
             </div>
             <div class="flex justify-between items-center py-2">
               <span class="font-medium">KDDI</span>
-              <span class="text-[#E6392E] font-bold">+1.2%</span>
+              <span id="sidebar-kddi" class="font-bold ticker-up">---</span>
             </div>
           </div>
           <p class="text-xs text-gray-500 mt-4">※ 毎週LINEで詳細を無料配信</p>
@@ -669,15 +676,25 @@
 
   <script>
   // ==================== 实时行情（Yahoo v7/v8 双源，按 symbol 映射） ====================
-  const symbolMap = { '^N225':'nikkei', '^TPX':'topix', '998405.T':'topix', 'USDJPY=X':'usdjpy', '^DJI':'nydow', '000001.SS':'shanghai', '^JPXREIT':'reit' };
+  const symbolMap = { '^N225':'nikkei', '^TPX':'topix', '998405.T':'topix', '1306.T':'topix', 'USDJPY=X':'usdjpy', '^DJI':'nydow', '000001.SS':'shanghai', '^JPXREIT':'reit' };
+  const sidebarMap = { '8306.T':'sidebar-mufg', '2914.T':'sidebar-jt', '9531.T':'sidebar-tokyogas', '9433.T':'sidebar-kddi' };
   async function fetchMarketData() {
     try {
-      const res = await fetch('/.netlify/functions/yahoo-proxy');
+      let res = await fetch('/.netlify/functions/yahoo-proxy');
+      if (!res.ok) res = await fetch('/api/market');
       const data = await res.json();
       const list = data?.quoteResponse?.result || [];
       const bySymbol = {};
       list.forEach(q => { if (q?.symbol) bySymbol[q.symbol] = q; });
       Object.keys(symbolMap).forEach(sym => { if (bySymbol[sym]) updateTicker(symbolMap[sym], bySymbol[sym]); });
+      Object.keys(sidebarMap).forEach(sym => {
+        const q = bySymbol[sym];
+        const el = document.getElementById(sidebarMap[sym]);
+        if (!el || !q) return;
+        const pct = q.regularMarketChangePercent ?? 0;
+        el.textContent = pct !== null && pct !== undefined ? (pct >= 0 ? '+' : '') + pct.toFixed(2) + '%' : '---';
+        el.className = 'font-bold ' + (pct >= 0 ? 'ticker-up' : 'ticker-down');
+      });
     } catch (e) { console.warn('行情取得失敗'); }
   }
   function updateTicker(id, quote) {

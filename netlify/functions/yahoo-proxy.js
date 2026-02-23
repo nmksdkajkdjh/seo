@@ -7,22 +7,30 @@
  */
 const TICKERS = [
   { id: 'nikkei', symbols: ['^N225'] },
-  { id: 'topix', symbols: ['^TPX', '998405.T'] },
+  { id: 'topix', symbols: ['^TPX', '998405.T', '1306.T'] },
   { id: 'usdjpy', symbols: ['USDJPY=X'] },
   { id: 'nydow', symbols: ['^DJI'] },
   { id: 'shanghai', symbols: ['000001.SS'] },
-  { id: 'reit', symbols: ['^JPXREIT'] }
+  { id: 'reit', symbols: ['^JPXREIT'] },
+  { id: 'mufg', symbols: ['8306.T'] },
+  { id: 'jt', symbols: ['2914.T'] },
+  { id: 'tokyogas', symbols: ['9531.T'] },
+  { id: 'kddi', symbols: ['9433.T'] }
 ];
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 
 // Finnhub symbol 映射（Yahoo 失败时使用，可多试几个）
 const FINNHUB_FALLBACKS = {
   nikkei: ['^N225'],
-  topix: ['^TPX', 'TPX', '.TPX', 'TPX:IND'],
+  topix: ['^TPX', 'TPX', '.TPX', 'TPX:IND', '998405.T', '1306.T'],
   usdjpy: ['OANDA:USD_JPY'],
   nydow: ['^DJI'],
   shanghai: ['000001.SS'],
-  reit: ['^JPXREIT', '1348.T']
+  reit: ['^JPXREIT', '1348.T'],
+  mufg: ['8306.T'],
+  jt: ['2914.T'],
+  tokyogas: ['9531.T'],
+  kddi: ['9433.T']
 };
 
 function getPrice(q) {
@@ -128,7 +136,7 @@ async function resolveTicker(ticker, bySym) {
   for (const sym of ticker.symbols) {
     try {
       let q = await fetchV8Chart(sym);
-      if (!q && ticker.id === 'topix') q = await fetchV8Chart(sym, '1mo');
+      if (!q && (ticker.id === 'topix' || ticker.id === 'reit')) q = await fetchV8Chart(sym, '1mo');
       if (q && getPrice(q) != null) {
         return { symbol: ticker.symbols[0], ...q };
       }

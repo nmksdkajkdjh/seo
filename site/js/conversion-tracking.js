@@ -10,7 +10,10 @@
   // 登録者数：每次浏览调用 API 自增，更新 id="visitor-count" 或 [data-visitor-count]
   var visitorEl = document.getElementById('visitor-count') || document.querySelector('[data-visitor-count]');
   if (visitorEl) {
-    fetch('/api/visitor-counter').then(function(r){ return r.json(); }).then(function(d){
+    function tryVisitor(u) {
+      return fetch(u).then(function(r){ if (r.ok) return r.json(); throw new Error('fail'); });
+    }
+    tryVisitor('/api/visitor-counter').catch(function(){ return tryVisitor('/.netlify/functions/visitor-counter'); }).then(function(d){
       if (d && typeof d.count === 'number') {
         visitorEl.textContent = '登録者' + Number(d.count).toLocaleString('ja-JP') + '人突破';
       }
