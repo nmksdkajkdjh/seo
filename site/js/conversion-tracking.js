@@ -9,7 +9,8 @@
   var path = window.location.pathname;
   var pageType = (path === '/' || path === '/index.html') ? 'home' :
     /\/blog\/(tokyo|osaka|aichi|fukuoka|kanagawa|hokkaido|shizuoka|hiroshima|tokai|kansai|shutoken)-kouhaitou/.test(path) ? 'region' :
-    /\/blog\/(rimawari|genpai|100man|nisa|2026-kouhaitou|nikkei|kabusui|bouraku)/.test(path) ? 'topic' : 'other';
+    /\/blog\/(rimawari|genpai|100man|nisa|2026-kouhaitou|nikkei|kabusui|bouraku|shiozuke|high-dividend-trap|ginkou-shosha-hikaku|ruishin-haitou-meigara)/.test(path) ? 'topic' :
+    /\/glossary\//.test(path) ? 'glossary' : 'other';
 
   function evt(o){ return Object.assign({ page_url: path, page_type: pageType }, o); }
 
