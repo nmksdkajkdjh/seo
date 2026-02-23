@@ -2,9 +2,20 @@
  * 流量×转化×变现 - LINE登録ファネル計測 v1.1
  * Events: line_register_click, cta_visible, scroll_75
  * page_type: home=首页 / region=地域页 / topic=专题页
+ * visitor-count: 登録者数（每次浏览+1，基础32000，需 Cloudflare KV）
  */
 (function(){
   window.dataLayer = window.dataLayer || [];
+
+  // 登録者数：每次浏览调用 API 自增，更新 id="visitor-count" 或 [data-visitor-count]
+  var visitorEl = document.getElementById('visitor-count') || document.querySelector('[data-visitor-count]');
+  if (visitorEl) {
+    fetch('/api/visitor-counter').then(function(r){ return r.json(); }).then(function(d){
+      if (d && typeof d.count === 'number') {
+        visitorEl.textContent = '登録者' + Number(d.count).toLocaleString('ja-JP') + '人突破';
+      }
+    }).catch(function(){});
+  }
   var fired = { cta_visible: {}, scroll_75: false };
   var path = window.location.pathname;
   var pageType = (path === '/' || path === '/index.html') ? 'home' :
