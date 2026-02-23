@@ -6,3 +6,8 @@ main = "worker.js"
 [assets]
 directory = "./site"
 binding = "ASSETS"
+
+# 登録者数自增：运行 wrangler kv namespace create "VISITOR_COUNTER" 后取消下方注释并填入 id
+# [[kv_namespaces]]
+# binding = "VISITOR_KV"
+# id = "YOUR_KV_NAMESPACE_ID"

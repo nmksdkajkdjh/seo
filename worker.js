@@ -1,7 +1,9 @@
 /**
- * Cloudflare Worker: 静态资源 + 行情 API 代理
+ * Cloudflare Worker: 静态资源 + 行情 API 代理 + 访客计数
  * 行情代理兼容 /.netlify/functions/yahoo-proxy 路径
+ * 访客计数：每次访问 +1，基础 32,000，存 KV
  */
+const BASE_COUNT = 32000;
 const TICKERS = [
   { id: 'nikkei', symbols: ['^N225'] },
   { id: 'topix', symbols: ['^TPX', '998405.T'] },
@@ -121,6 +123,24 @@ async function resolveTicker(ticker, bySym, env) {
   return null;
 }
 
+async function handleVisitorCounter(env) {
+  const headers = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Cache-Control': 'no-store' };
+  const kv = env.VISITOR_KV;
+  if (!kv) {
+    return new Response(JSON.stringify({ count: BASE_COUNT, fallback: true }), { status: 200, headers });
+  }
+  try {
+    const key = 'line-count';
+    const raw = await kv.get(key);
+    const current = raw ? parseInt(raw, 10) : BASE_COUNT;
+    const count = current + 1;
+    await kv.put(key, String(count));
+    return new Response(JSON.stringify({ count }), { status: 200, headers });
+  } catch (e) {
+    return new Response(JSON.stringify({ count: BASE_COUNT, fallback: true }), { status: 200, headers });
+  }
+}
+
 async function handleMarketProxy(env) {
   const headers = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Cache-Control': 'public, max-age=60' };
   try {
@@ -140,6 +160,9 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     // 行情 API：兼容 Netlify 旧路径
+    if (url.pathname === '/.netlify/functions/visitor-counter' || url.pathname === '/api/visitor-counter') {
+      return handleVisitorCounter(env);
+    }
     if (url.pathname === '/.netlify/functions/yahoo-proxy' || url.pathname === '/api/market') {
       if (request.method === 'OPTIONS') {
         return new Response(null, { status: 204, headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Max-Age': '86400' } });
