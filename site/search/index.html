@@ -117,7 +117,7 @@
         resultsEl.innerHTML = filtered.map(a => `
           <article class="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition flex flex-col sm:flex-row gap-6">
             <a href="${a.url}" class="flex-shrink-0 w-full sm:w-48 h-32 sm:h-24 overflow-hidden rounded-xl">
-              <img src="${a.thumb}" class="w-full h-full object-cover" alt="">
+              <img src="${a.thumb}" class="w-full h-full object-cover" alt="${a.title.replace(/"/g, '&quot;')}" loading="lazy">
             </a>
             <div class="flex-1">
               <time class="text-xs text-gray-500">${a.date}</time>
