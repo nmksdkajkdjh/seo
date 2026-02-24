@@ -1,5 +1,5 @@
 # Cloudflare Workers 静态站点部署
-name = "kouhaitou-jp"
+name = "seo"
 compatibility_date = "2026-02-22"
 main = "worker.js"
 
